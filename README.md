@@ -185,7 +185,7 @@
 <!-- 🎯 STATS CARDS CON TEMA CYBERPUNK 🎯 -->
 <p align="center">
 <img height="180em" src="https://github-readme-stats.vercel.app/api?username=federicolopeza&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=1f6feb&text_color=c9d1d9&ring_color=58a6ff"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=federicolopeza&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=federicolopeza&layout=compact&langs_count=8&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&hide=html"/>
 </p>
 
 <!-- 🔥 STREAK STATS ÉPICO 🔥 -->

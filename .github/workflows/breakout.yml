@@ -17,11 +17,11 @@ jobs:
       - uses: cyprieng/github-breakout@v1.2.3
         with:
           github_username: federicolopeza
-          enable_ghost_bricks: false
+          enable_ghost_bricks: true
           output_path: ./breakout/
           paddle_color: "#10B981"
           ball_color: "#10B981"
-          bricks_colors: "#6EE7B7,#34D399,#10B981,#059669,#047857"
+          bricks_colors: "#134e3a,#065f46,#059669,#10B981,#6EE7B7"
 
       - name: Commit & Push
         run: |

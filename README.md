@@ -58,11 +58,7 @@ build > hype
 ## `~/contrib`
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./breakout/dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="./breakout/light.svg">
-    <img alt="Breakout Contribution Game" src="./breakout/custom.svg" width="98%" />
-  </picture>
+  <img src="./breakout/custom.svg" alt="Breakout Contribution Game" width="98%" />
 </div>
 
 ## `~/contact`

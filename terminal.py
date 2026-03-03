@@ -6,6 +6,9 @@ import gifos
 
 def main():
     t = gifos.Terminal(750, 420, 15, 15)
+    t.set_prompt(
+        "\x1b[0;92mfederico\x1b[0m@\x1b[0;93mpentagoo ~> \x1b[0m"
+    )
     tz = ZoneInfo("America/Montevideo")
     year_now = datetime.now(tz).strftime("%Y")
 

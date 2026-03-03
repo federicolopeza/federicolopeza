@@ -65,12 +65,6 @@ drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
   <img src="https://skillicons.dev/icons?i=postgres,redis,docker,linux,bash,git,github&theme=dark" alt="PostgreSQL, Redis, Docker, Linux, Bash, Git, GitHub" />
 </div>
 
-## `~/trophies`
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=federicolopeza&theme=matrix&no-bg=true&no-frame=true&column=-1&margin-w=15" alt="GitHub Trophies" />
-</div>
-
 ## `~/metrics`
 
 <div align="center">

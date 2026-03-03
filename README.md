@@ -58,15 +58,11 @@ build > hype
 ## `~/contrib`
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/profile-3d-contrib/profile-night-green.svg" alt="3D Contribution Calendar" width="98%" />
-</div>
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/space-shooter.gif" alt="Space Shooter Contributions" width="98%" />
-</div>
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./breakout/dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="./breakout/light.svg">
+    <img alt="Breakout Contribution Game" src="./breakout/custom.svg" width="98%" />
+  </picture>
 </div>
 
 ## `~/contact`

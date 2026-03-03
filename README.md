@@ -64,22 +64,23 @@ drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
 ## `~/metrics`
 
 <div align="center">
-  <img width="32%" src="https://github-readme-stats.vercel.app/api?username=federicolopeza&show_icons=true&theme=transparent&title_color=10B981&text_color=c9d1d9&icon_color=10B981&border_color=30363d" alt="GitHub Stats" />
-  <img width="32%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=federicolopeza&layout=compact&theme=transparent&title_color=10B981&text_color=c9d1d9&border_color=30363d" alt="Top Languages" />
-  <img width="32%" src="https://streak-stats.demolab.com?user=federicolopeza&theme=transparent&ring=10B981&fire=10B981&currStreakLabel=10B981&border=30363d" alt="GitHub Streak" />
+  <img width="49%" src="https://streak-stats.demolab.com?user=federicolopeza&theme=transparent&ring=10B981&fire=10B981&currStreakLabel=10B981&border=30363d" alt="GitHub Streak" />
+  <img width="49%" src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/metrics-languages.svg" alt="Languages" />
 </div>
 
 <div align="center">
   <img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=federicolopeza&bg_color=0d1117&color=c9d1d9&line=10B981&point=10B981&area=true&hide_border=true" alt="Contribution Graph" />
 </div>
 
-<br/>
-
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/wakatime?username=federicolopeza&theme=transparent&title_color=10B981&text_color=c9d1d9&border_color=30363d&layout=compact" alt="WakaTime Stats" />
+  <img width="98%" src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/metrics-habits.svg" alt="Coding Habits" />
 </div>
 
-## `~/snake`
+## `~/contrib`
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/profile-3d-contrib/profile-night-green.svg" alt="3D Contribution Calendar" width="98%" />
+</div>
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />

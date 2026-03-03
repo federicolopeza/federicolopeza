@@ -3,7 +3,11 @@ build > hype
 -->
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=2800&pause=900&color=10B981&center=true&vCenter=true&repeat=true&width=980&lines=%24+./federico-lopez+--init;Scraping+the+web+at+production+scale...;P2P+trading+bots+%7C+ETL+pipelines+%7C+APIs;Founder+%40+AutoP2P+%26+Pentagoo+Labs" alt="Typing SVG" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./output.gif">
+    <source media="(prefers-color-scheme: light)" srcset="./output.gif">
+    <img alt="Terminal" src="./output.gif" width="98%" />
+  </picture>
 </div>
 
 ## `~/about`
@@ -61,6 +65,12 @@ drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
   <img src="https://skillicons.dev/icons?i=postgres,redis,docker,linux,bash,git,github&theme=dark" alt="PostgreSQL, Redis, Docker, Linux, Bash, Git, GitHub" />
 </div>
 
+## `~/trophies`
+
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=federicolopeza&theme=matrix&no-bg=true&no-frame=true&column=-1&margin-w=15" alt="GitHub Trophies" />
+</div>
+
 ## `~/metrics`
 
 <div align="center">
@@ -72,14 +82,14 @@ drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
   <img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=federicolopeza&bg_color=0d1117&color=c9d1d9&line=10B981&point=10B981&area=true&hide_border=true" alt="Contribution Graph" />
 </div>
 
-<div align="center">
-  <img width="98%" src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/metrics-habits.svg" alt="Coding Habits" />
-</div>
-
 ## `~/contrib`
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/profile-3d-contrib/profile-night-green.svg" alt="3D Contribution Calendar" width="98%" />
+</div>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/space-shooter.gif" alt="Space Shooter Contributions" width="98%" />
 </div>
 
 <div align="center">

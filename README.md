@@ -10,27 +10,7 @@ build > hype
   </picture>
 </div>
 
-## `~/about`
-
-```bash
-$ whoami
-> Federico Lopez — Full Stack Engineer
-
-$ cat location.txt
-> Montevideo, Uruguay
-
-$ cat bio.txt
-> Scraping, automation, and P2P trading systems at scale.
-> Founder @ AutoP2P · Pentagoo Labs.
-
-$ ls -la ventures/
-drwxr-xr-x  autop2p/        # P2P trading automation SaaS
-drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
-```
-
-<p align="left">
-  <img src="https://img.shields.io/badge/Montevideo-Uruguay-0d1117?style=for-the-badge&logo=googlemaps&logoColor=10B981&labelColor=0d1117&color=10B981" alt="Montevideo, Uruguay" />
-  <img src="https://img.shields.io/badge/status-shipping_weekly-0d1117?style=for-the-badge&logo=githubactions&logoColor=10B981&labelColor=0d1117&color=10B981" alt="Status: shipping weekly" />
+<p align="center">
   <img src="https://komarev.com/ghpvc/?username=federicolopeza&style=for-the-badge&color=10B981" alt="Profile views" />
 </p>
 
@@ -68,8 +48,7 @@ drwxr-xr-x  pentagoo-labs/  # Scraping & automation factory
 ## `~/metrics`
 
 <div align="center">
-  <img width="49%" src="https://streak-stats.demolab.com?user=federicolopeza&theme=transparent&ring=10B981&fire=10B981&currStreakLabel=10B981&border=30363d" alt="GitHub Streak" />
-  <img width="49%" src="https://raw.githubusercontent.com/federicolopeza/federicolopeza/main/metrics-languages.svg" alt="Languages" />
+  <img width="60%" src="https://streak-stats.demolab.com?user=federicolopeza&theme=transparent&ring=10B981&fire=10B981&currStreakLabel=10B981&border=30363d" alt="GitHub Streak" />
 </div>
 
 <div align="center">

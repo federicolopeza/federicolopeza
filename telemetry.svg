@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1280 250" width="1280" height="250" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, &#39;SF Mono&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace">
+  <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a855f7" stop-opacity="0.35"></stop><stop offset="1" stop-color="#a855f7" stop-opacity="0"></stop></linearGradient></defs>
+  <rect width="1280" height="250" rx="12" fill="#090611"></rect><rect width="1280" height="250" rx="12" fill="none" stroke="#241a38" stroke-width="1"></rect>
+  <text x="40" y="42" font-size="13" letter-spacing="2" fill="#5f5480">$ <tspan fill="#c084fc">cat</tspan> ~/telemetry</text>
+  <line x1="724" y1="60" x2="724" y2="220" stroke="#241a38" stroke-width="1" stroke-dasharray="2 6"></line>
+  <text x="40" y="78" font-size="11.5" letter-spacing="1" fill="#8a7caa">TESTS SHIPPED</text>
+    <rect x="40" y="86" width="470" height="7" rx="3.5" fill="#130d20"></rect>
+    <rect x="40" y="86" width="0" height="7" rx="3.5" fill="#a855f7"></rect>
+    <text x="524" y="93" font-size="14" font-weight="700" fill="#e8e0f7">2.2k+</text>
+  <text x="40" y="120" font-size="11.5" letter-spacing="1" fill="#8a7caa">AI EXPLOIT MODULES</text>
+    <rect x="40" y="128" width="470" height="7" rx="3.5" fill="#130d20"></rect>
+    <rect x="40" y="128" width="0" height="7" rx="3.5" fill="#ec4899"></rect>
+    <text x="524" y="135" font-size="14" font-weight="700" fill="#e8e0f7">291</text>
+  <text x="40" y="162" font-size="11.5" letter-spacing="1" fill="#8a7caa">ARCH DECISION RECORDS</text>
+    <rect x="40" y="170" width="470" height="7" rx="3.5" fill="#130d20"></rect>
+    <rect x="40" y="170" width="0" height="7" rx="3.5" fill="#a855f7"></rect>
+    <text x="524" y="177" font-size="14" font-weight="700" fill="#e8e0f7">71</text>
+  <text x="40" y="204" font-size="11.5" letter-spacing="1" fill="#8a7caa">FILES AUDITED</text>
+    <rect x="40" y="212" width="470" height="7" rx="3.5" fill="#130d20"></rect>
+    <rect x="40" y="212" width="0" height="7" rx="3.5" fill="#ec4899"></rect>
+    <text x="524" y="219" font-size="14" font-weight="700" fill="#e8e0f7">17.7k</text>
+
+  <text x="760" y="42" font-size="11.5" letter-spacing="1" fill="#8a7caa">ACTIVITY // last 30d</text>
+  <path d="M760.0,156.4 L778.4,126.1 L796.8,108.5 L815.2,88.0 L833.6,144.4 L852.0,155.5 L870.4,127.7 L888.8,135.5 L907.2,146.8 L925.6,98.9 L944.0,144.3 L962.4,140.2 L980.8,137.6 L999.2,145.4 L1017.6,150.7 L1036.0,129.9 L1054.4,139.4 L1072.8,109.0 L1091.2,153.4 L1109.6,142.1 L1128.0,141.6 L1146.4,154.3 L1164.8,116.0 L1183.2,140.8 L1201.6,115.1 L1220.0,135.9 L1220.0,190 L760,190 Z" fill="url(#area)"></path>
+  <path d="M760.0,156.4 L778.4,126.1 L796.8,108.5 L815.2,88.0 L833.6,144.4 L852.0,155.5 L870.4,127.7 L888.8,135.5 L907.2,146.8 L925.6,98.9 L944.0,144.3 L962.4,140.2 L980.8,137.6 L999.2,145.4 L1017.6,150.7 L1036.0,129.9 L1054.4,139.4 L1072.8,109.0 L1091.2,153.4 L1109.6,142.1 L1128.0,141.6 L1146.4,154.3 L1164.8,116.0 L1183.2,140.8 L1201.6,115.1 L1220.0,135.9" fill="none" stroke="#c084fc" stroke-width="2" stroke-linejoin="round"></path>
+  <circle r="4" fill="#ffffff"></circle>
+  <text x="1220" y="42" text-anchor="end" font-size="11.5" fill="#f472b6">▲ activo</text>
+</svg>

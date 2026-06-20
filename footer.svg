@@ -1,0 +1,7 @@
+<svg viewBox="0 0 1280 110" width="1280" height="110" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, &#39;SF Mono&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace">
+  <rect width="1280" height="110" rx="12" fill="#090611"></rect><rect width="1280" height="110" rx="12" fill="none" stroke="#241a38" stroke-width="1"></rect>
+  <text x="40" y="46" font-size="13.5"><tspan fill="#a855f7">federico@pentagoo</tspan><tspan fill="#5f5480">:</tspan><tspan fill="#d946ef">~</tspan><tspan fill="#5f5480">$</tspan><tspan fill="#c3b6de"> ./status --now</tspan></text>
+  <circle cx="46" cy="78" r="4" fill="#a855f7"></circle>
+  <text x="60" y="82" font-size="13" fill="#c3b6de"><tspan fill="#c084fc">ONLINE</tspan>  ·  tz=UYT(UTC−3)  ·  building=<tspan fill="#c084fc">AutoP2P·Rekon·Pentagoo</tspan>  ·  open_to=<tspan fill="#f472b6">collaborations</tspan></text>
+  <rect x="372" y="71" width="9" height="15" fill="#a855f7"></rect>
+</svg>

@@ -1,0 +1,17 @@
+<svg viewBox="0 0 1280 190" width="1280" height="190" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, &#39;SF Mono&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace">
+  <defs><linearGradient id="pl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a855f7"></stop><stop offset="0.5" stop-color="#d946ef"></stop><stop offset="1" stop-color="#ec4899"></stop></linearGradient>
+  <filter id="g" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDev="4"></feGaussianBlur></filter></defs>
+  <rect width="1280" height="190" rx="12" fill="#090611"></rect><rect width="1280" height="190" rx="12" fill="none" stroke="#241a38" stroke-width="1"></rect>
+  <text x="40" y="42" font-size="13" letter-spacing="2" fill="#5f5480">$ <tspan fill="#c084fc">rekon</tspan> --run <tspan fill="#34284a">· human-in-the-loop pipeline</tspan></text>
+  <text x="1240" y="42" text-anchor="end" font-size="11.5" letter-spacing="1" fill="#8a7caa">ROE-gated · fail-closed · SHA-256</text>
+  <line x1="110" y1="110" x2="1170" y2="110" stroke="url(#pl)" stroke-width="2" opacity="0.5"></line>
+  <circle r="6" fill="#c084fc" filter="url(#g)"></circle>
+  <circle r="3" fill="#ffffff"></circle>
+  <circle cx="110" cy="110" r="5" fill="#0c0916" stroke="#a855f7" stroke-width="2"></circle><text x="110" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">ROE</text>
+  <circle cx="287" cy="110" r="5" fill="#0c0916" stroke="#a855f7" stroke-width="2"></circle><text x="287" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">RECON</text>
+  <circle cx="463" cy="110" r="5" fill="#0c0916" stroke="#a855f7" stroke-width="2"></circle><text x="463" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">SCAN</text>
+  <circle cx="640" cy="110" r="9" fill="#0c0916" stroke="#ec4899" stroke-width="2"></circle><circle cx="640" cy="110" r="9" fill="none" stroke="#ec4899" stroke-width="2"></circle><text x="640" y="84" text-anchor="middle" font-size="13" fill="#ec4899">🔒</text><text x="640" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#f472b6" font-weight="700">GATE</text>
+  <circle cx="817" cy="110" r="5" fill="#0c0916" stroke="#f472b6" stroke-width="2"></circle><text x="817" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">EXPLOIT</text>
+  <circle cx="993" cy="110" r="5" fill="#0c0916" stroke="#f472b6" stroke-width="2"></circle><text x="993" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">VALIDATE</text>
+  <circle cx="1170" cy="110" r="5" fill="#0c0916" stroke="#f472b6" stroke-width="2"></circle><text x="1170" y="148" text-anchor="middle" font-size="12.5" letter-spacing="1" fill="#c3b6de">REPORT</text>
+</svg>

@@ -1,99 +1,79 @@
 <svg viewBox="0 0 1280 290" width="1280" height="290" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, &#39;SF Mono&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace">
-  <rect width="1280" height="290" rx="12" fill="#080a0e"></rect>
-  <rect width="1280" height="290" rx="12" fill="none" stroke="#14191f" stroke-width="1"></rect>
-  <text x="40" y="40" font-size="13" letter-spacing="2" fill="#4d5660">$ <tspan fill="#3ddc97">ls</tspan> ~/stack <tspan fill="#36404a">—— 18 entries</tspan></text>
-  <circle cx="1042" cy="35" r="3.5" fill="#10B981"></circle>
-  <text x="1054" y="40" font-size="12" letter-spacing="1" fill="#6e7681">BUILD</text>
-  <circle cx="1132" cy="35" r="3.5" fill="#ef4444"></circle>
-  <text x="1144" y="40" font-size="12" letter-spacing="1" fill="#6e7681">OFFENSIVE</text>
+  <rect width="1280" height="290" rx="12" fill="#090611"></rect>
+  <rect width="1280" height="290" rx="12" fill="none" stroke="#241a38" stroke-width="1"></rect>
+  <text x="40" y="40" font-size="13" letter-spacing="2" fill="#5f5480">$ <tspan fill="#c084fc">ls</tspan> ~/stack <tspan fill="#5f5480">—— 18 entries</tspan></text>
+  <circle cx="1042" cy="35" r="3.5" fill="#a855f7"></circle><text x="1054" y="40" font-size="12" letter-spacing="1" fill="#8a7caa">BUILD</text>
+  <circle cx="1132" cy="35" r="3.5" fill="#ec4899"></circle><text x="1144" y="40" font-size="12" letter-spacing="1" fill="#8a7caa">OFFENSIVE</text>
   <g>
-    <rect x="40" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="58" cy="96" r="3" fill="#10B981"></circle>
-    <text x="72" y="101" font-size="14.5" fill="#c4ccd4">Python</text>
-  </g>
+    <rect x="40" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="58" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="72" y="101" font-size="14.5" fill="#c3b6de">Python</text></g>
   <g>
-    <rect x="240" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="258" cy="96" r="3" fill="#10B981"></circle>
-    <text x="272" y="101" font-size="14.5" fill="#c4ccd4">TypeScript</text>
-  </g>
+    <rect x="240" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="258" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="272" y="101" font-size="14.5" fill="#c3b6de">TypeScript</text></g>
   <g>
-    <rect x="440" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="458" cy="96" r="3" fill="#10B981"></circle>
-    <text x="472" y="101" font-size="14.5" fill="#c4ccd4">Bash</text>
-  </g>
+    <rect x="440" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="458" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="472" y="101" font-size="14.5" fill="#c3b6de">Bash</text></g>
   <g>
-    <rect x="640" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="658" cy="96" r="3" fill="#10B981"></circle>
-    <text x="672" y="101" font-size="14.5" fill="#c4ccd4">FastAPI</text>
-  </g>
+    <rect x="640" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="658" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="672" y="101" font-size="14.5" fill="#c3b6de">FastAPI</text></g>
   <g>
-    <rect x="840" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="858" cy="96" r="3" fill="#10B981"></circle>
-    <text x="872" y="101" font-size="14.5" fill="#c4ccd4">Node.js</text>
-  </g>
+    <rect x="840" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="858" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="872" y="101" font-size="14.5" fill="#c3b6de">Node.js</text></g>
   <g>
-    <rect x="1040" y="70" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="1058" cy="96" r="3" fill="#10B981"></circle>
-    <text x="1072" y="101" font-size="14.5" fill="#c4ccd4">PostgreSQL</text>
-  </g>
+    <rect x="1040" y="70" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="1058" cy="96" r="3" fill="#a855f7"></circle>
+    <text x="1072" y="101" font-size="14.5" fill="#c3b6de">PostgreSQL</text></g>
   <g>
-    <rect x="40" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="58" cy="160" r="3" fill="#10B981"></circle>
-    <text x="72" y="165" font-size="14.5" fill="#c4ccd4">Redis</text>
-  </g>
+    <rect x="40" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="58" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="72" y="165" font-size="14.5" fill="#c3b6de">Redis</text></g>
   <g>
-    <rect x="240" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="258" cy="160" r="3" fill="#10B981"></circle>
-    <text x="272" y="165" font-size="14.5" fill="#c4ccd4">React</text>
-  </g>
+    <rect x="240" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="258" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="272" y="165" font-size="14.5" fill="#c3b6de">React</text></g>
   <g>
-    <rect x="440" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="458" cy="160" r="3" fill="#10B981"></circle>
-    <text x="472" y="165" font-size="14.5" fill="#c4ccd4">Next.js</text>
-  </g>
+    <rect x="440" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="458" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="472" y="165" font-size="14.5" fill="#c3b6de">Next.js</text></g>
   <g>
-    <rect x="640" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="658" cy="160" r="3" fill="#10B981"></circle>
-    <text x="672" y="165" font-size="14.5" fill="#c4ccd4">Tailwind</text>
-  </g>
+    <rect x="640" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="658" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="672" y="165" font-size="14.5" fill="#c3b6de">Tailwind</text></g>
   <g>
-    <rect x="840" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="858" cy="160" r="3" fill="#10B981"></circle>
-    <text x="872" y="165" font-size="14.5" fill="#c4ccd4">Docker</text>
-  </g>
+    <rect x="840" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="858" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="872" y="165" font-size="14.5" fill="#c3b6de">Docker</text></g>
   <g>
-    <rect x="1040" y="134" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="1058" cy="160" r="3" fill="#10B981"></circle>
-    <text x="1072" y="165" font-size="14.5" fill="#c4ccd4">Linux</text>
-  </g>
+    <rect x="1040" y="134" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="1058" cy="160" r="3" fill="#a855f7"></circle>
+    <text x="1072" y="165" font-size="14.5" fill="#c3b6de">Linux</text></g>
   <g>
-    <rect x="40" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="58" cy="224" r="3" fill="#10B981"></circle>
-    <text x="72" y="229" font-size="14.5" fill="#c4ccd4">Git</text>
-  </g>
+    <rect x="40" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="58" cy="224" r="3" fill="#a855f7"></circle>
+    <text x="72" y="229" font-size="14.5" fill="#c3b6de">Git</text></g>
   <g>
-    <rect x="240" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="258" cy="224" r="3" fill="#10B981"></circle>
-    <text x="272" y="229" font-size="14.5" fill="#c4ccd4">Cloudflare</text>
-  </g>
+    <rect x="240" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="258" cy="224" r="3" fill="#a855f7"></circle>
+    <text x="272" y="229" font-size="14.5" fill="#c3b6de">Cloudflare</text></g>
   <g>
-    <rect x="440" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="458" cy="224" r="3" fill="#10B981"></circle>
-    <text x="472" y="229" font-size="14.5" fill="#c4ccd4">Proxmox</text>
-  </g>
+    <rect x="440" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="458" cy="224" r="3" fill="#a855f7"></circle>
+    <text x="472" y="229" font-size="14.5" fill="#c3b6de">Proxmox</text></g>
   <g>
-    <rect x="640" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="658" cy="224" r="3" fill="#ef4444"></circle>
-    <text x="672" y="229" font-size="14.5" fill="#c4ccd4">Playwright</text>
-  </g>
+    <rect x="640" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="658" cy="224" r="3" fill="#ec4899"></circle>
+    <text x="672" y="229" font-size="14.5" fill="#c3b6de">Playwright</text></g>
   <g>
-    <rect x="840" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="858" cy="224" r="3" fill="#ef4444"></circle>
-    <text x="872" y="229" font-size="14.5" fill="#c4ccd4">Ollama</text>
-  </g>
+    <rect x="840" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="858" cy="224" r="3" fill="#ec4899"></circle>
+    <text x="872" y="229" font-size="14.5" fill="#c3b6de">Ollama</text></g>
   <g>
-    <rect x="1040" y="198" width="184" height="52" rx="8" fill="#0c1117" stroke="#1c2530" stroke-width="1"></rect>
-    <circle cx="1058" cy="224" r="3" fill="#ef4444"></circle>
-    <text x="1072" y="229" font-size="14.5" fill="#c4ccd4">LLM / AI</text>
-  </g>
+    <rect x="1040" y="198" width="184" height="52" rx="8" fill="#130d20" stroke="#241a38" stroke-width="1"></rect>
+    <circle cx="1058" cy="224" r="3" fill="#ec4899"></circle>
+    <text x="1072" y="229" font-size="14.5" fill="#c3b6de">LLM / AI</text></g>
 </svg>

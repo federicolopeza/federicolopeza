@@ -1,72 +1,53 @@
 <svg viewBox="0 0 1280 440" width="1280" height="440" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, &#39;SF Mono&#39;, &#39;JetBrains Mono&#39;, Menlo, Consolas, monospace">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b0f15"></stop>
-      <stop offset="1" stop-color="#080a0e"></stop>
+      <stop offset="0" stop-color="#0e0a18"></stop><stop offset="1" stop-color="#080610"></stop>
     </linearGradient>
     <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#10B981" stop-opacity="0"></stop>
-      <stop offset="0.5" stop-color="#10B981" stop-opacity="0.06"></stop>
-      <stop offset="1" stop-color="#10B981" stop-opacity="0"></stop>
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0"></stop>
+      <stop offset="0.5" stop-color="#a855f7" stop-opacity="0.07"></stop>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0"></stop>
+    </linearGradient>
+    <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="-260" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#e8e0f7"></stop><stop offset="0.4" stop-color="#e8e0f7"></stop>
+      <stop offset="0.5" stop-color="#c084fc"></stop><stop offset="0.6" stop-color="#e8e0f7"></stop>
+      <stop offset="1" stop-color="#e8e0f7"></stop>
+      
+      
     </linearGradient>
     <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
       <path d="M42 0 H0 V42" stroke="#ffffff" stroke-opacity="0.022" stroke-width="1" fill="none"></path>
     </pattern>
-    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDev="70"></feGaussianBlur>
-    </filter>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDev="70"></feGaussianBlur></filter>
   </defs>
-
   <rect width="1280" height="440" rx="14" fill="url(#bg)"></rect>
-  <circle cx="120" cy="70" r="240" fill="#10B981" opacity="0.10" filter="url(#soft)"></circle>
-  <circle cx="1180" cy="400" r="240" fill="#ef4444" opacity="0.09" filter="url(#soft)"></circle>
+  <circle cx="120" cy="70" r="250" fill="#a855f7" opacity="0.13" filter="url(#soft)"></circle>
+  <circle cx="1180" cy="400" r="250" fill="#ec4899" opacity="0.12" filter="url(#soft)"></circle>
   <rect width="1280" height="440" rx="14" fill="url(#grid)"></rect>
-  <rect width="1280" height="440" rx="14" fill="none" stroke="#1c2530" stroke-width="1"></rect>
-
+  <rect width="1280" height="440" rx="14" fill="none" stroke="#241a38" stroke-width="1"></rect>
   <rect x="1" y="-150" width="1278" height="150" fill="url(#scan)">
     
   </rect>
-
-  <g stroke="#2a3340" stroke-width="1.5" fill="none">
-    <path d="M24 54 L24 24 L54 24"></path>
-    <path d="M1256 54 L1256 24 L1226 24"></path>
-    <path d="M24 386 L24 416 L54 416"></path>
-    <path d="M1256 386 L1256 416 L1226 416"></path>
+  <g stroke="#2e2248" stroke-width="1.5" fill="none">
+    <path d="M24 54 L24 24 L54 24"></path><path d="M1256 54 L1256 24 L1226 24"></path>
+    <path d="M24 386 L24 416 L54 416"></path><path d="M1256 386 L1256 416 L1226 416"></path>
   </g>
-
-  <text x="44" y="48" font-size="12.5" letter-spacing="3" fill="#3ddc97">PENTAGOO://OPERATOR-CONSOLE</text>
-  <circle cx="1006" cy="44" r="4" fill="#10B981">
-    
-  </circle>
-  <text x="1020" y="48" font-size="12.5" letter-spacing="2" fill="#10B981">ONLINE</text>
-  <text x="1236" y="48" text-anchor="end" font-size="12.5" letter-spacing="2" fill="#6e7681">UYT−3 · 2026</text>
-  <line x1="44" y1="66" x2="1236" y2="66" stroke="#161d26" stroke-width="1"></line>
-
-  <text x="42" y="118" font-size="12.5" letter-spacing="4" fill="#f0746e">// OPERATOR DOSSIER — REV 2026</text>
-  <text x="40" y="192" font-size="68" font-weight="700" letter-spacing="-1" fill="#f0f3f6">FEDERICO LÓPEZ</text>
-  <text x="44" y="228" font-size="15" fill="#8b949e">@federicolopeza<tspan fill="#4d5660">   ·   Montevideo, Uruguay</tspan></text>
-
-  <text x="44" y="298" font-size="27" fill="#e9edf1">I <tspan fill="#34d399" font-weight="700">build</tspan> systems <tspan fill="#4d5660">—</tspan> and <tspan fill="#f87171" font-weight="700">break</tspan> them.</text>
-
-  <text x="44" y="352" font-size="16"><tspan fill="#10B981">federico@pentagoo</tspan><tspan fill="#4d5660">:</tspan><tspan fill="#58a6ff">~</tspan><tspan fill="#4d5660">$</tspan><tspan fill="#c9d1d9"> whoami</tspan></text>
-  <rect x="298" y="339" width="10" height="18" fill="#10B981">
-    
-  </rect>
-
-  <line x1="812" y1="96" x2="812" y2="384" stroke="#161d26" stroke-width="1" stroke-dasharray="2 6"></line>
-
+  <text x="44" y="48" font-size="12.5" letter-spacing="3" fill="#c084fc">PENTAGOO://OPERATOR-CONSOLE</text>
+  <circle cx="1006" cy="44" r="4" fill="#a855f7"></circle>
+  <text x="1020" y="48" font-size="12.5" letter-spacing="2" fill="#a855f7">ONLINE</text>
+  <text x="1236" y="48" text-anchor="end" font-size="12.5" letter-spacing="2" fill="#8a7caa">UYT−3 · 2026</text>
+  <line x1="44" y1="66" x2="1236" y2="66" stroke="#241a38" stroke-width="1"></line>
+  <text x="42" y="118" font-size="12.5" letter-spacing="4" fill="#f472b6">// OPERATOR DOSSIER — REV 2026</text>
+  <text x="40" y="192" font-size="68" font-weight="700" letter-spacing="-1" fill="url(#shine)">FEDERICO LÓPEZ</text>
+  <text x="44" y="228" font-size="15" fill="#8a7caa">@federicolopeza<tspan fill="#5f5480">   ·   Montevideo, Uruguay</tspan></text>
+  <text x="44" y="298" font-size="27" fill="#e8e0f7">I <tspan fill="#c084fc" font-weight="700">build</tspan> systems <tspan fill="#5f5480">—</tspan> and <tspan fill="#f472b6" font-weight="700">break</tspan> them.</text>
+  <text x="44" y="352" font-size="16"><tspan fill="#a855f7">federico@pentagoo</tspan><tspan fill="#5f5480">:</tspan><tspan fill="#d946ef">~</tspan><tspan fill="#5f5480">$</tspan><tspan fill="#c3b6de"> whoami</tspan></text>
+  <rect x="298" y="339" width="10" height="18" fill="#a855f7"></rect>
+  <line x1="812" y1="96" x2="812" y2="384" stroke="#241a38" stroke-width="1" stroke-dasharray="2 6"></line>
   <g>
-    <rect x="856" y="120" width="26" height="2" fill="#10B981"></rect>
-    <text x="856" y="166" font-size="40" font-weight="700" fill="#f0f3f6">110</text>
-    <text x="857" y="188" font-size="11" letter-spacing="1.5" fill="#6e7681">REPOSITORIES</text>
-    <rect x="1052" y="120" width="26" height="2" fill="#10B981"></rect>
-    <text x="1052" y="166" font-size="40" font-weight="700" fill="#f0f3f6">2.2k+</text>
-    <text x="1053" y="188" font-size="11" letter-spacing="1.5" fill="#6e7681">TESTS SHIPPED</text>
-    <rect x="856" y="252" width="26" height="2" fill="#ef4444"></rect>
-    <text x="856" y="298" font-size="40" font-weight="700" fill="#f0f3f6">291</text>
-    <text x="857" y="320" font-size="11" letter-spacing="1.5" fill="#6e7681">AI EXPLOIT MODULES</text>
-    <rect x="1052" y="252" width="26" height="2" fill="#ef4444"></rect>
-    <text x="1052" y="298" font-size="40" font-weight="700" fill="#f0f3f6">17.7k</text>
-    <text x="1053" y="320" font-size="11" letter-spacing="1.5" fill="#6e7681">FILES AUDITED</text>
+    <rect x="856" y="120" width="26" height="2" fill="#a855f7"></rect><text x="856" y="166" font-size="40" font-weight="700" fill="#e8e0f7">110</text><text x="857" y="188" font-size="11" letter-spacing="1.5" fill="#8a7caa">REPOSITORIES</text>
+    <rect x="1052" y="120" width="26" height="2" fill="#a855f7"></rect><text x="1052" y="166" font-size="40" font-weight="700" fill="#e8e0f7">2.2k+</text><text x="1053" y="188" font-size="11" letter-spacing="1.5" fill="#8a7caa">TESTS SHIPPED</text>
+    <rect x="856" y="252" width="26" height="2" fill="#ec4899"></rect><text x="856" y="298" font-size="40" font-weight="700" fill="#e8e0f7">291</text><text x="857" y="320" font-size="11" letter-spacing="1.5" fill="#8a7caa">AI EXPLOIT MODULES</text>
+    <rect x="1052" y="252" width="26" height="2" fill="#ec4899"></rect><text x="1052" y="298" font-size="40" font-weight="700" fill="#e8e0f7">17.7k</text><text x="1053" y="320" font-size="11" letter-spacing="1.5" fill="#8a7caa">FILES AUDITED</text>
   </g>
 </svg>

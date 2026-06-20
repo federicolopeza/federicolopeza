@@ -4,7 +4,7 @@
 -->
 
 <div align="center">
-  <img alt="Federico López — operator console" src="./assets/banner.svg" width="100%" />
+  <img alt="Federico López — operator console" src="./banner.svg" width="100%" />
 </div>
 
 <br/>

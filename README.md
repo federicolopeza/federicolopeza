@@ -84,7 +84,7 @@ $ cat ./focus
 ## `~/stack`
 
 <div align="center">
-  <img alt="Stack" src="./assets/stack.svg" width="100%" />
+  <img alt="Stack" src="./stack.svg" width="100%" />
 </div>
 
 ## `~/contrib`

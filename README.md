@@ -21,7 +21,6 @@ I build systems — and break them.
 $ whoami
 federico — ingeniero full stack y operador ofensivo. Construyo sistemas que
 mueven dinero y datos a escala, y rompo los que no deberían dejarme entrar.
-# tres empresas: una cerrada por decisión propia, dos vivas, ninguna en default.
 ```
 
 ## `~/build`

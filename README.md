@@ -12,7 +12,7 @@
 ```bash
 $ whoami
 federico — ingeniero full stack y operador ofensivo. Construyo sistemas que
-mueven dinero y datos a escala, y rompo los que no deberían dejarme entrar.
+mueven dinero y datos a escala.
 
 $ cat ./focus
 > e-commerce / fintech · automatización · seguridad ofensiva con IA
@@ -57,20 +57,6 @@ $ cat ./focus
 
 <img src="./divider.svg" width="100%" />
 
-## `~/research` &nbsp;<sub>— disclosure responsable · público · verificable · sin NDA</sub>
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>WebKit / Safari</h3>
-      <p>Auditoría de <strong>17.773 archivos</strong> del motor → <strong>3 bugs confirmados</strong>.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>WordPress 6.7 · AI Client</h3>
-      <p><strong>Prompt injection</strong> → ejecución de PHP en el plugin de IA.</p>
-    </td>
-  </tr>
-</table>
 
 <img src="./divider.svg" width="100%" />
 

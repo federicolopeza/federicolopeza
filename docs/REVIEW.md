@@ -98,3 +98,8 @@ correct three visible illustrations without horizontal overflow. Explicit GitHub
 themes also work when they disagree with the OS theme. Gitleaks, TruffleHog
 (offline detection) and credential-pattern checks found no secrets in the staged
 changes. The final published renderer is checked separately after push.
+
+Post-push verification confirmed all assets load from GitHub. The profile view
+did not scroll to unprefixed Markdown hashes, so the three navigation links now
+target GitHub’s observed `user-content-` heading IDs directly. This uses native
+fragment navigation in both profile and repository views.

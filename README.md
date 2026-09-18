@@ -18,7 +18,7 @@ CTO at [REKON](https://rekon.sh/en/), creator of ARGUS, and building [AutoP2P](h
 
 I work on both sides of a system: making it useful, and finding where its assumptions fail.
 
-[REKON](#rekon) &nbsp; / &nbsp; [AutoP2P](#autop2p) &nbsp; / &nbsp; [Get in touch](#get-in-touch)
+[REKON](#user-content-rekon) &nbsp; / &nbsp; [AutoP2P](#user-content-autop2p) &nbsp; / &nbsp; [Get in touch](#user-content-get-in-touch)
 
 ## REKON
 

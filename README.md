@@ -17,7 +17,7 @@
 
 Founder of [Pentagoo Labs](https://labs.pentagoo.uy/). CTO at [REKON](https://rekon.sh/en/) and creator of ARGUS. Building [AutoP2P](https://autop2p.dev/en/). Based in Montevideo, Uruguay.
 
-[Writing](https://federicolopez.uy/blog/) &nbsp; / &nbsp; [Products](#user-content-rekon) &nbsp; / &nbsp; [Get in touch](#user-content-get-in-touch)
+[Writing](https://federicolopez.uy/blog/) &nbsp; / &nbsp; [Products](https://federicolopez.uy/projects/) &nbsp; / &nbsp; [Get in touch](https://www.linkedin.com/in/federicolopeza/)
 
 **Latest note → [AutoP2P v2: your P2P desk, your rules](https://federicolopez.uy/blog/autop2p-v2/)**
 

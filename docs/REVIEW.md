@@ -27,7 +27,8 @@ writing is labeled as such. No private repository details were consulted.
   asset interception were used before push; those are explicitly previews.
 - Visible illustrations load without horizontal overflow. Theme selection also
   works when explicit GitHub theme differs from operating-system preference.
-- Published fragment navigation was checked on both profile and repository.
+- Published fragment scrolling proved inconsistent between GitHub surfaces.
+  The final navigation uses direct writing/projects/contact destinations.
 - Final published verification and screenshots are recorded separately after push.
 - Scoped staged/commit secret scans precede publication.
 

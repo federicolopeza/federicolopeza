@@ -52,8 +52,9 @@ proved unreliable. The implementation therefore uses two linked pictures:
   wrapping **anchor** choose the theme; GitHub's CSS selects its `href`.
 - A width-only source selects a compact illustration below 1000 viewport pixels.
   This accounts for the sidebar: at 768px, the actual profile article is 398px wide.
-- Native `user-content-` heading IDs are used for in-page navigation, observed
-  and tested in actual published profile and repository views.
+- The short navigation links directly to writing, projects and LinkedIn.
+  Published testing found inconsistent fragment scrolling in GitHub’s repository
+  view, so the final version avoids depending on its in-page anchor handling.
 
 No arbitrary CSS, JavaScript, iframe, external renderer, widget or runtime
 service. Generic Markdown viewers may display both themed images; GitHub is the

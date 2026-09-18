@@ -13,12 +13,12 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 FONTS = {
-    "display": TTFont(ASSETS / "fonts/BarlowCondensed-SemiBold.ttf"),
-    "body": TTFont(ASSETS / "fonts/Barlow-Regular.ttf"),
+    "display": TTFont(ASSETS / "fonts/BricolageGrotesque-Bold.ttf"),
+    "body": TTFont(ASSETS / "fonts/IBMPlexSans-Regular.ttf"),
 }
 THEMES = {
-    "light": dict(bg="#F0F2FA", ink="#172247", muted="#4E5976", line="#BCC4DA", accent="#3049CF", soft="#DDE4FF"),
-    "dark": dict(bg="#171E32", ink="#EEF2FF", muted="#B5C0DC", line="#4D5C80", accent="#A8BAFF", soft="#273963"),
+    "light": dict(bg="#F7F8FA", ink="#22252D", muted="#5C626E", line="#CDD2DB", accent="#2455D6", soft="#E5EBFA"),
+    "dark": dict(bg="#17191E", ink="#F0F1F4", muted="#ABB2C0", line="#444B59", accent="#9EB7FF", soft="#27334F"),
 }
 
 
@@ -65,22 +65,35 @@ def monogram(x, y, scale, ink, accent):
 
 def hero(theme, mobile):
     p = THEMES[theme]
-    w, h = (360, 304) if mobile else (840, 342)
+    w, h = (360, 286) if mobile else (840, 286)
     s = rect(0, 0, w, h, p["bg"])
     if mobile:
-        s += text("FEDERICO", 22, 89, 90, p["ink"], "display")
-        s += text("LÓPEZ", 22, 191, 102, p["ink"], "display")
-        s += monogram(267, 142, .29, p["ink"], p["accent"])
-        s += line(24, 218, 336, 218, p["line"], 1)
-        s += text("Build systems.", 24, 249, 23, p["ink"])
-        s += text("Question their limits.", 24, 278, 23, p["accent"])
+        s += text("Software / systems / field notes", 24, 34, 14, p["muted"])
+        s += text("Federico", 21, 105, 64, p["ink"], "display")
+        s += text("López", 21, 175, 70, p["ink"], "display")
+        s += circle(227, 168, 6, p["accent"], p["accent"])
+        s += line(24, 201, 336, 201, p["line"], 1)
+        s += text("I build software.", 24, 236, 23, p["ink"])
+        s += text("I take systems apart.", 24, 267, 23, p["ink"])
     else:
-        s += text("FEDERICO", 34, 124, 140, p["ink"], "display")
-        s += text("LÓPEZ", 34, 263, 150, p["ink"], "display")
-        s += monogram(570, 69, .97, p["ink"], p["accent"])
-        s += line(38, 283, 802, 283, p["line"], 1)
-        s += text("Build systems. Question their limits.", 38, 319, 26, p["ink"])
-    write(f'hero{"-mobile" if mobile else ""}-{theme}', w, h, "Federico López — Build systems. Question their limits.", s)
+        s += text("Software / systems / field notes", 32, 37, 17, p["muted"])
+        s += text("Federico", 27, 125, 86, p["ink"], "display")
+        s += text("López", 27, 207, 90, p["ink"], "display")
+        s += circle(293, 199, 7, p["accent"], p["accent"])
+        # A shared input branches into building, examining and writing.
+        s += line(514, 130, 550, 130, p["ink"], 2)
+        s += line(550, 70, 550, 190, p["line"], 2)
+        for y, label in [(70, "Build"), (130, "Examine"), (190, "Write")]:
+            s += line(550, y, 594, y, p["line"], 2)
+            s += text(label, 632, y+7, 22, p["ink"])
+        s += rect(594, 61, 18, 18, p["accent"])
+        s += circle(603, 130, 10, p["accent"])
+        s += line(594, 184, 613, 184, p["accent"], 2)
+        s += line(594, 191, 613, 191, p["accent"], 2)
+        s += line(594, 198, 608, 198, p["accent"], 2)
+        s += line(32, 235, 808, 235, p["line"], 1)
+        s += text("I build software. I take systems apart.", 32, 269, 23, p["ink"])
+    write(f'hero{"-mobile" if mobile else ""}-{theme}', w, h, "Federico López. Software, systems and field notes.", s)
 
 
 def rekon(theme, mobile):
@@ -103,11 +116,11 @@ def rekon(theme, mobile):
     for dy in [-8, 0, 8]:
         s += line(xs[2]-7, cy+dy, xs[2]+7, cy+dy, p["accent"], 2)
     size = 19 if mobile else 22
-    labels = [("Explore", xs[0]-28), ("Authorize", xs[1]-34), ("Validate", xs[2]-29)] if mobile else [("Explore attack paths", 38), ("Human authorization", 323), ("Reproducible evidence", 591)]
+    labels = [("Explore", xs[0]-28), ("Authorize", xs[1]-34), ("Validate", xs[2]-29)] if mobile else [("Attack paths", 38), ("Human authorization", 305), ("Validated evidence", 598)]
     for label, x in labels:
         s += text(label, x, 111, size, p["ink"])
     if mobile:
-        s += text("Human approval before intrusive action.", 23, 143, 18, p["muted"])
+        s += text("Human approval before action.", 23, 143, 18, p["muted"])
     write(f'rekon{"-mobile" if mobile else ""}-{theme}', w, h, "REKON — exploration, human authorization, validated evidence. Conceptual diagram.", s)
 
 
@@ -125,13 +138,13 @@ def autop2p(theme, mobile):
     s += f'<path d="{d}" fill="none" stroke="{p["accent"]}" stroke-width="3"/>'
     s += circle(end, 44, 4, p["accent"], p["bg"])
     tx = 224 if mobile else 552
-    s += text("UPDATE / HOLD", tx, 57, 23 if mobile else 31, p["ink"], "display")
+    s += text("UPDATE / HOLD", tx, 57, 15 if mobile else 27, p["ink"], "display")
     s += text("+ a reason", tx, 81, 18 if mobile else 23, p["muted"])
     s += text("Your rules. Your limits.", start, 122 if mobile else 121, 19 if mobile else 23, p["ink"])
     if mobile:
-        s += text("Decision schematic · no live prices", start, 145, 18, p["muted"])
+        s += text("Schematic · not live prices", start, 145, 17, p["muted"])
     else:
-        s += text("Decision schematic · no live prices", tx, 121, 17, p["muted"])
+        s += text("Schematic · not live prices", tx, 121, 17, p["muted"])
     write(f'autop2p{"-mobile" if mobile else ""}-{theme}', w, h, "AutoP2P — decisions bounded by operator rules, with a recorded reason. Schematic, not market data.", s)
 
 

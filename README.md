@@ -2,29 +2,32 @@
 <a href="./assets/hero-light.svg#gh-light-mode-only">
 <picture>
   <source media="(max-width: 1000px)" srcset="./assets/hero-mobile-light.svg">
-  <img src="./assets/hero-light.svg#gh-light-mode-only" width="100%" alt="Federico López. Build systems. Question their limits.">
+  <img src="./assets/hero-light.svg#gh-light-mode-only" width="100%" alt="Federico López. I build software. I take systems apart.">
 </picture>
 </a>
 <a href="./assets/hero-dark.svg#gh-dark-mode-only">
 <picture>
   <source media="(max-width: 1000px)" srcset="./assets/hero-mobile-dark.svg">
-  <img src="./assets/hero-dark.svg#gh-dark-mode-only" width="100%" alt="Federico López. Build systems. Question their limits.">
+  <img src="./assets/hero-dark.svg#gh-dark-mode-only" width="100%" alt="Federico López. I build software. I take systems apart.">
 </picture>
 </a>
 </p>
 
-**I'm Federico López**, a software builder in Montevideo, Uruguay.
-CTO at [REKON](https://rekon.sh/en/), creator of ARGUS, and building [AutoP2P](https://autop2p.dev/en/).
+**I'm Federico López.** I build software, take systems apart, and write about what I find.
 
-I work on both sides of a system: making it useful, and finding where its assumptions fail.
+Founder of [Pentagoo Labs](https://labs.pentagoo.uy/). CTO at [REKON](https://rekon.sh/en/) and creator of ARGUS. Building [AutoP2P](https://autop2p.dev/en/). Based in Montevideo, Uruguay.
 
-[REKON](#user-content-rekon) &nbsp; / &nbsp; [AutoP2P](#user-content-autop2p) &nbsp; / &nbsp; [Get in touch](#user-content-get-in-touch)
+[Writing](https://federicolopez.uy/blog/) &nbsp; / &nbsp; [Products](#user-content-rekon) &nbsp; / &nbsp; [Get in touch](#user-content-get-in-touch)
+
+**Latest note → [AutoP2P v2: your P2P desk, your rules](https://federicolopez.uy/blog/autop2p-v2/)**
+
+Automated pricing, orders and chat for Binance P2P merchants. A product introduction, [also in Spanish](https://federicolopez.uy/es/blog/autop2p-v2/).
 
 ## REKON
 
-### Offensive security, with a human at the controls.
+**Agents investigate. People authorize.**
 
-I'm building ARGUS, the software behind REKON's security assessments. AI agents help explore attack paths; specialists authorize intrusive actions and validate the findings. The result is reproducible evidence that a team can use to fix the problem.
+I built ARGUS, the software behind REKON’s security assessments. AI agents explore attack paths; specialists authorize intrusive actions and validate the findings. Evidence needs to be reproducible, so another person can check it.
 
 <p>
 <a href="./assets/rekon-light.svg#gh-light-mode-only">
@@ -41,13 +44,11 @@ I'm building ARGUS, the software behind REKON's security assessments. AI agents 
 </a>
 </p>
 
-The engineering problem: give agents room to investigate while keeping authority with the operator.
-
 [Explore REKON](https://rekon.sh/en/) &nbsp; / &nbsp; [Read the research](https://rekon.sh/en/blog/)
 
 ## AutoP2P
 
-### A trading desk that follows your rules.
+**A changing market. Operator-defined limits.**
 
 AutoP2P automates repricing for Binance P2P merchants. Operators set the strategy and price limits; the engine decides when to update or hold, and records why. Ads, orders and chat share one workspace. Funds stay on Binance.
 
@@ -70,18 +71,21 @@ The engineering problem: turn a changing market into bounded, explainable decisi
 
 [Explore AutoP2P](https://autop2p.dev/en/) &nbsp; / &nbsp; [Product overview on GitHub](https://github.com/federicolopeza/binance-p2p-bot)
 
-## What connects the work
+## Pentagoo Labs
 
-I'm interested in what happens between a decision and its consequences: who can act, what constrains the action, and how you explain it afterwards. That question connects my work in product engineering, automation and offensive security.
+My software factory: custom products, applied AI and integrations. The work starts with a concrete problem and continues through the details that make a system usable in production.
 
-Outside those products, [Artificial Analysis CLI & Dashboard](https://github.com/federicolopeza/artificial_analysis) is a small public tool for exploring model benchmarks, cost and performance with Python, Rich and Streamlit.
+[Explore the studio](https://labs.pentagoo.uy/)
 
----
+## From the notebook
 
-### Get in touch
+- [Building AutoP2P](https://federicolopez.uy/blog/construyendo-autop2p/) — an early architecture note on API limits, state and recovery.
+- [Artificial Analysis CLI](https://github.com/federicolopeza/artificial_analysis) — a small Python CLI and dashboard for exploring model benchmarks, cost and performance.
 
-Building a product, untangling a system, or testing its assumptions?
+The questions I keep coming back to: **Who can act? What stops it? Can you explain the decision?**
 
-[LinkedIn](https://www.linkedin.com/in/federicolopeza/) &nbsp; / &nbsp; [Personal site](https://federicolopez.uy/)
+## Get in touch
 
-Montevideo, Uruguay · UTC−3
+A product to build, a system to untangle, or a question worth exploring.
+
+[Personal site & writing](https://federicolopez.uy/) &nbsp; / &nbsp; [LinkedIn](https://www.linkedin.com/in/federicolopeza/) &nbsp; / &nbsp; [Work with Pentagoo Labs](https://labs.pentagoo.uy/#contact)

@@ -1,85 +1,75 @@
-# Federico López — Built / examined
+# Federico López — Software, systems & field notes
 
-The name is the identity. The products are its evidence. A short reading path:
-person → REKON → AutoP2P → engineering perspective → contact.
+The name is the identity; products and writing are the evidence. This profile and
+federicolopez.uy are one personal publication: build software, examine systems,
+write down what you find. The final iteration follows the user's request for a
+personal developer/hacker blog rather than an institutional portfolio.
 
 ## Direction
 
-Three routes were considered:
+Three directions were considered: a systems atlas dominated by diagrams, a
+large typographic portfolio, and a personal technical notebook. The notebook is
+the final choice: the human name stays prominent, while current writing and
+inspectable work appear immediately. A compact branch graphic joins building,
+examining and writing. It describes the practice rather than pretending to be
+live infrastructure. No terminal performance, fake telemetry or status badges.
 
-- **Systems atlas:** diagrams as the main identity. Relevant, but made Federico
-  look like an infrastructure project and demanded too much explanation.
-- **Technical publication:** a restrained journal with annotations and essays.
-  Credible, but too quiet for a memorable personal introduction.
-- **Built / examined — selected:** a large condensed wordmark and a custom F/L
-  construction. The separated join makes the build/question relationship visible.
-  Product diagrams show where control sits, rather than pretending to be live UI.
+Bricolage Grotesque Bold gives the name an individual editorial voice; IBM Plex
+Sans keeps the diagrams readable. Fonts are bundled under their OFL licenses and
+outlined in SVG. No remote font requests or visitor-installed font assumptions.
+The cool paper/graphite/cobalt palette matches the website. Dark variants retain
+the same hierarchy; REKON's authorization boundary uses restrained red.
 
-The hero uses Barlow Condensed Semibold; diagram text uses Barlow Regular.
-Both are bundled under the SIL Open Font License and converted to outlines.
-Visitors need neither the fonts nor a remote font request. All essential copy
-and links also exist as ordinary README text.
+The banner is composed separately at desktop and mobile sizes. Each product has
+a small explanatory diagram, with its text and actual links retained in native
+Markdown. The profile introduces Federico, Pentagoo Labs, REKON/ARGUS, AutoP2P,
+a current article, a historical engineering note and one small public code tool.
+The products keep distinct roles; no client, revenue, uptime or benchmark filler.
 
-The palette uses pale blue paper `#F0F2FA`, navy ink `#172247`, secondary ink
-`#4E5976`, structural lines `#BCC4DA`, and blue `#3049CF`. Dark counterparts
-are defined in the generator. REKON's authorization boundary uses a restrained
-red, related to its public identity; AutoP2P's bounded decision uses blue.
-The meaning is also expressed in words and geometry, never color alone.
+## Public references and factual scope
 
-One signature, two explanatory figures, no animation. Native GitHub typography
-carries the narrative. No badges, fake live statuses, service widgets or counters.
+- Anthony Fu's profile/portfolio: identify the person and attach claims to work.
+- Bartosz Ciechanowski: diagrams should explain a mechanism, not decorate a page.
+- `https://labs.pentagoo.uy/`: the current public site identifies Federico as
+  founder/technical director and calls Pentagoo Labs his software factory. That
+  evidence supersedes the earlier uncertainty about the studio's current role.
+- `https://rekon.sh/en/`: CTO and creator of ARGUS; human authorization and
+  reproducible evidence. No inferred REKON founder title or credentials.
+- `https://autop2p.dev/en/`: v2, operator rules, ads/orders/chat and no custody.
+  The live page differs from indexed beta copy; live HTML was used for current
+  facts. The product overview repository is not represented as engine source.
 
-## References studied
+Source sites were inspected, not copied. No private product repository was read.
+The person's account biography, location, pins and settings were not modified.
 
-- [Anthony Fu's profile](https://github.com/antfu) and
-  [portfolio](https://antfu.me/): identify the person quickly and attach claims
-  directly to work. Borrowed the prioritization, not the layout or graphics.
-- [Bartosz Ciechanowski](https://ciechanow.ski/): a technical diagram should
-  explain a mechanism. Neither graph here is decorative telemetry.
-- [REKON](https://rekon.sh/) and [AutoP2P](https://autop2p.dev/en/): preserve the
-  distinction between human-authorized security work and rule-driven automation.
-  The profile synthesizes the products without reproducing their landing pages.
+## GitHub renderer
 
-## GitHub implementation
+The Markdown API preserves picture/source/media/srcset/alt and image width.
+GitHub rewrites color-scheme sources at runtime; combined width/theme sources
+proved unreliable. The implementation therefore uses two linked pictures:
 
-GitHub's Markdown API preserves `picture`, `source`, `media`, `srcset`, `alt`
-and image width. Its client rewrites color-scheme media conditions. Combining
-theme and width in one source proved unreliable in the first browser pass.
+- Supported `#gh-light-mode-only` / `#gh-dark-mode-only` fragments on the
+  wrapping **anchor** choose the theme; GitHub's CSS selects its `href`.
+- A width-only source selects a compact illustration below 1000 viewport pixels.
+  This accounts for the sidebar: at 768px, the actual profile article is 398px wide.
+- Native `user-content-` heading IDs are used for in-page navigation, observed
+  and tested in actual published profile and repository views.
 
-The final implementation uses two linked pictures per illustration:
+No arbitrary CSS, JavaScript, iframe, external renderer, widget or runtime
+service. Generic Markdown viewers may display both themed images; GitHub is the
+delivery target. All essential identity/project/contact text remains native.
 
-- GitHub's supported `#gh-light-mode-only` / `#gh-dark-mode-only` link fragments
-  choose the theme. The fragment is deliberately on the wrapping **anchor**:
-  GitHub's actual CSS selects `href`, not a bare image's `src`.
-- Each picture uses an ordinary width-only source to select its compact SVG.
-- The compact breakpoint is 1000 viewport pixels, accounting for GitHub's sidebar.
-  At a 768px viewport the profile's article was only 398px wide.
-- The fallback is the matching desktop image. Each image link opens its SVG.
-
-References: [GitHub's theme-fragment support](https://github.blog/changelog/2021-11-24-specify-theme-context-for-images-in-markdown/)
+See GitHub's [theme fragments](https://github.blog/changelog/2021-11-24-specify-theme-context-for-images-in-markdown/)
 and [picture support](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github).
-
-No arbitrary README CSS, JavaScript, iframes, external render services or runtime
-dependencies. On generic Markdown renderers without GitHub's theme CSS, both
-theme variants may appear; GitHub is the delivery target.
 
 ## Maintenance
 
-Edit copy in `README.md`. Edit visual copy, geometry and palettes in
-`scripts/generate_assets.py`, then run:
+Edit README copy normally. Edit visual copy, geometry and palettes in
+`scripts/generate_assets.py`, then run `uv run scripts/generate_assets.py`.
+It creates all 12 SVGs deterministically from the bundled fonts. No credentials,
+cron, external widgets or bot commits. The obsolete daily generators/workflows
+were removed in the initial implementation after reference checks.
 
-```sh
-uv run scripts/generate_assets.py
-```
-
-The script pins its sole generation dependency, fonttools, and uses the bundled
-font files. Font sources: [Barlow](https://github.com/google/fonts/tree/main/ofl/barlow)
-and [Barlow Condensed](https://github.com/google/fonts/tree/main/ofl/barlowcondensed).
-Licenses live alongside the fonts. Generated SVGs are committed assets; GitHub
-does not run the generator. Nothing needs scheduled refreshes or credentials.
-
-There are intentionally no Actions workflows. The retired terminal workflow
-installed a moving Git dependency and consumed `METRICS_TOKEN` to generate an
-unreferenced GIF. Both it and the contribution-game workflow committed daily
-with write permissions. Their assets and generators were removed together.
-No account settings or secrets were changed.
+Review at 375/768/1440 in both themes and both GitHub surfaces. Check SVG bounds,
+loaded images, OS-vs-GitHub theme mismatch, contact anchors, native text and
+no horizontal overflow. Keep local previews distinct from published screenshots.

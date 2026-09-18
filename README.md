@@ -1,106 +1,87 @@
-<!--
-  root@federico:~$ cat /etc/motto
-  I build systems — and break them.
--->
+<p>
+<a href="./assets/hero-light.svg#gh-light-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/hero-mobile-light.svg">
+  <img src="./assets/hero-light.svg#gh-light-mode-only" width="100%" alt="Federico López. Build systems. Question their limits.">
+</picture>
+</a>
+<a href="./assets/hero-dark.svg#gh-dark-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/hero-mobile-dark.svg">
+  <img src="./assets/hero-dark.svg#gh-dark-mode-only" width="100%" alt="Federico López. Build systems. Question their limits.">
+</picture>
+</a>
+</p>
 
-<div align="center">
-  <img alt="Federico López — operator console" src="./banner.svg" width="100%" />
-</div>
+**I'm Federico López**, a software builder in Montevideo, Uruguay.
+CTO at [REKON](https://rekon.sh/en/), creator of ARGUS, and building [AutoP2P](https://autop2p.dev/en/).
 
-<br/>
+I work on both sides of a system: making it useful, and finding where its assumptions fail.
 
-```bash
-$ whoami
-federico — ingeniero full stack y operador ofensivo. Construyo sistemas que
-mueven dinero y datos a escala.
+[REKON](#rekon) &nbsp; / &nbsp; [AutoP2P](#autop2p) &nbsp; / &nbsp; [Get in touch](#get-in-touch)
 
-$ cat ./focus
-> e-commerce / fintech · automatización · seguridad ofensiva con IA
-> del MVP a producción en días, no meses
-```
+## REKON
 
-<img src="./divider.svg" width="100%" />
+### Offensive security, with a human at the controls.
 
-## `~/build` &nbsp;<sub>— sistemas que mueven dinero y datos a escala</sub>
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>▸ <a href="https://autop2p.dev">AutoP2P</a></h3>
-      <p>SaaS multi-tenant para automatizar anuncios P2P (C2C) de Binance: motor de repricing, gestión multi-anuncio y dashboard en tiempo real. Aislamiento estricto por tenant con RLS en Postgres.</p>
-      <p><strong>2.2k+ tests</strong> · <strong>71 ADRs</strong> · arquitectura hexagonal</p>
-      <p><code>FastAPI</code> <code>PostgreSQL</code> <code>Redis Streams</code></p>
-      <sub>↗ autop2p.dev</sub>
-    </td>
-    <td width="50%" valign="top">
-      <h3>▸ <a href="https://labs.pentagoo.uy">Pentagoo Labs</a></h3>
-      <p>Software factory: scrapers industriales, automatización, integraciones (pagos / CRM / ERP), pipelines de datos y dashboards. Del MVP a producción en días, no meses.</p>
-      <p><strong>scraping</strong> · <strong>automation</strong> · <strong>data pipelines</strong></p>
-      <p><code>Python</code> <code>Playwright</code> <code>Docker</code></p>
-      <sub>↗ labs.pentagoo.uy</sub>
-    </td>
-  </tr>
-</table>
-
-<img src="./divider.svg" width="100%" />
-
-## `~/break` &nbsp;<sub>— lo que tu scanner no ve, nosotros lo explotamos</sub>
-
-<p><strong>▸ <a href="https://rekon.sh">Rekon</a></strong> &nbsp;<sub>· offensive security, AI-powered</sub></p>
-<p>Pentesting potenciado por IA con motor propio: <strong>291 módulos en paralelo</strong> y evidencia encadenada por <code>SHA-256</code>. <strong>Operator Gate</strong> — un pentester humano aprueba cada exploit antes de ejecutarlo. La IA propone, el operador autoriza. <em>No es auto-pwn.</em></p>
-
-<div align="center">
-  <img alt="Rekon pipeline" src="./pipeline.svg" width="100%" />
-</div>
-
-<p><sub><code>Pentest</code> <code>Red Team</code> <code>IR</code> <code>Smart Contracts</code> <code>LLM / AI</code> &nbsp;·&nbsp; ↗ rekon.sh</sub></p>
-
-<img src="./divider.svg" width="100%" />
-
-
-<img src="./divider.svg" width="100%" />
-
-## `~/lab` &nbsp;<sub>— experimento sin miedo · snapshots + rollback</sub>
+I'm building ARGUS, the software behind REKON's security assessments. AI agents help explore attack paths; specialists authorize intrusive actions and validate the findings. The result is reproducible evidence that a team can use to fix the problem.
 
 <p>
-  <strong>homelab</strong> &nbsp; <code>Proxmox</code> <code>Coolify</code> <code>Gitea</code> <code>Grafana / Prometheus</code><br/>
-  <strong>LLMs locales</strong> &nbsp; <code>Ollama</code> <code>qwen3</code> <code>deepseek-r1</code> <code>Foundation-Sec-8B</code>
+<a href="./assets/rekon-light.svg#gh-light-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/rekon-mobile-light.svg">
+  <img src="./assets/rekon-light.svg#gh-light-mode-only" width="100%" alt="REKON approach: explore attack paths, obtain human authorization, then validate and document evidence. Conceptual diagram.">
+</picture>
+</a>
+<a href="./assets/rekon-dark.svg#gh-dark-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/rekon-mobile-dark.svg">
+  <img src="./assets/rekon-dark.svg#gh-dark-mode-only" width="100%" alt="REKON approach: explore attack paths, obtain human authorization, then validate and document evidence. Conceptual diagram.">
+</picture>
+</a>
 </p>
 
-<img src="./divider.svg" width="100%" />
+The engineering problem: give agents room to investigate while keeping authority with the operator.
 
-## `~/telemetry`
+[Explore REKON](https://rekon.sh/en/) &nbsp; / &nbsp; [Read the research](https://rekon.sh/en/blog/)
 
-<div align="center">
-  <img alt="Telemetry" src="./telemetry.svg" width="100%" />
-</div>
+## AutoP2P
 
-## `~/stack`
+### A trading desk that follows your rules.
 
-<div align="center">
-  <img alt="Stack" src="./stack.svg" width="100%" />
-</div>
+AutoP2P automates repricing for Binance P2P merchants. Operators set the strategy and price limits; the engine decides when to update or hold, and records why. Ads, orders and chat share one workspace. Funds stay on Binance.
 
-## `~/contrib`
-
-<div align="center">
-  <img alt="Contribution breakout game" src="./breakout/custom.svg" width="100%" />
-</div>
-
-<img src="./divider.svg" width="100%" />
-
-## `~/contact`
-
-<div align="center">
-  <img alt="Status" src="./footer.svg" width="100%" />
-</div>
-
-<p align="center">
-  <a href="https://federicolopez.uy"><strong>federicolopez.uy</strong></a> &nbsp;·&nbsp;
-  <a href="https://federicolopez.uy/blog">blog</a> &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/federicolopeza">linkedin</a> &nbsp;·&nbsp;
-  <a href="mailto:federico@pentagoo.uy">federico@pentagoo.uy</a>
-  <br/>
-  <sub>build →</sub> <a href="https://autop2p.dev">autop2p.dev</a> &nbsp;·&nbsp;
-  <a href="https://labs.pentagoo.uy">labs.pentagoo.uy</a> &nbsp;&nbsp; <sub>break →</sub> <a href="https://rekon.sh">rekon.sh</a>
+<p>
+<a href="./assets/autop2p-light.svg#gh-light-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/autop2p-mobile-light.svg">
+  <img src="./assets/autop2p-light.svg#gh-light-mode-only" width="100%" alt="AutoP2P approach: market input passes through operator rules and price limits to an update-or-hold decision with a recorded reason. Conceptual diagram, not live market data.">
+</picture>
+</a>
+<a href="./assets/autop2p-dark.svg#gh-dark-mode-only">
+<picture>
+  <source media="(max-width: 1000px)" srcset="./assets/autop2p-mobile-dark.svg">
+  <img src="./assets/autop2p-dark.svg#gh-dark-mode-only" width="100%" alt="AutoP2P approach: market input passes through operator rules and price limits to an update-or-hold decision with a recorded reason. Conceptual diagram, not live market data.">
+</picture>
+</a>
 </p>
+
+The engineering problem: turn a changing market into bounded, explainable decisions.
+
+[Explore AutoP2P](https://autop2p.dev/en/) &nbsp; / &nbsp; [Product overview on GitHub](https://github.com/federicolopeza/binance-p2p-bot)
+
+## What connects the work
+
+I'm interested in what happens between a decision and its consequences: who can act, what constrains the action, and how you explain it afterwards. That question connects my work in product engineering, automation and offensive security.
+
+Outside those products, [Artificial Analysis CLI & Dashboard](https://github.com/federicolopeza/artificial_analysis) is a small public tool for exploring model benchmarks, cost and performance with Python, Rich and Streamlit.
+
+---
+
+### Get in touch
+
+Building a product, untangling a system, or testing its assumptions?
+
+[LinkedIn](https://www.linkedin.com/in/federicolopeza/) &nbsp; / &nbsp; [Personal site](https://federicolopez.uy/)
+
+Montevideo, Uruguay · UTC−3

@@ -7,24 +7,38 @@ personal developer/hacker blog rather than an institutional portfolio.
 
 ## Direction
 
-Three directions were considered: a systems atlas dominated by diagrams, a
-large typographic portfolio, and a personal technical notebook. The notebook is
-the final choice: the human name stays prominent, while current writing and
-inspectable work appear immediately. A compact branch graphic joins building,
-examining and writing. It describes the practice rather than pretending to be
-live infrastructure. No terminal performance, fake telemetry or status badges.
+The September 2026 redesign keeps the personal-notebook structure and adds
+kinetic editorial motion: the name assembles glyph by glyph, rules and branches
+draw themselves, and each product diagram runs its own mechanism. Motion explains
+rather than decorates. There is still no terminal performance, fake telemetry,
+particle field or status badge.
 
 Bricolage Grotesque Bold gives the name an individual editorial voice; IBM Plex
 Sans keeps the diagrams readable. Fonts are bundled under their OFL licenses and
 outlined in SVG. No remote font requests or visitor-installed font assumptions.
-The cool paper/graphite/cobalt palette matches the website. Dark variants retain
-the same hierarchy; REKON's authorization boundary uses restrained red.
+Illustrations sit on quiet rounded cards in a paper/graphite palette with a
+cobalt accent; REKON's authorization boundary uses restrained red. All text
+colours are at least 4.5:1 against their card in both themes.
 
-The banner is composed separately at desktop and mobile sizes. Each product has
-a small explanatory diagram, with its text and actual links retained in native
-Markdown. The profile introduces Federico, Pentagoo Labs, REKON/ARGUS, AutoP2P,
-a current article, a historical engineering note and one small public code tool.
-The products keep distinct roles; no client, revenue, uptime or benchmark filler.
+Five compositions, each at desktop and mobile width and in light and dark:
+hero, REKON, AutoP2P, Pentagoo Labs and a thin section divider. Their text and
+links remain in native Markdown. The products keep distinct roles; no client,
+revenue, uptime or benchmark filler.
+
+## Motion
+
+- Motion is CSS inside each SVG (`STYLE` in `scripts/generate_assets.py`): no
+  scripts, SMIL or external requests.
+- Intro keyframes only declare `from`, so an element's own styles are its final
+  frame. Every intro uses `animation-fill-mode: both` and finishes in about 2.5 s.
+- `prefers-reduced-motion: reduce` switches every animation off and shows the
+  final composition immediately. Renderers without CSS animation show it too.
+- Each composition has one slow ambient loop (6–7 s, low contrast). It is
+  invisible at rest: a walker dot that travels a path and then leaves it, or a
+  halo that fades out. In REKON, the walkers stop at the authorization gate; in
+  AutoP2P, the walker never leaves the operator's price band.
+- Chromium starts the animation of an offscreen `<img>` SVG when it scrolls
+  into view, so the lower diagrams play when the reader reaches them.
 
 ## Public references and factual scope
 
@@ -67,10 +81,12 @@ and [picture support](https://docs.github.com/en/get-started/writing-on-github/g
 
 Edit README copy normally. Edit visual copy, geometry and palettes in
 `scripts/generate_assets.py`, then run `uv run scripts/generate_assets.py`.
-It creates all 12 SVGs deterministically from the bundled fonts. No credentials,
+It creates all 20 SVGs deterministically from the bundled fonts. No credentials,
 cron, external widgets or bot commits. The obsolete daily generators/workflows
 were removed in the initial implementation after reference checks.
 
-Review at 375/768/1440 in both themes and both GitHub surfaces. Check SVG bounds,
+Review at 375/768/1440 in both themes and both GitHub surfaces. Seek frames
+(0 / 0.8 / 1.6 / 2.5 / 4 s) and compare reduced motion against the rest frame.
+Check SVG bounds,
 loaded images, OS-vs-GitHub theme mismatch, contact anchors, native text and
 no horizontal overflow. Keep local previews distinct from published screenshots.

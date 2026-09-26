@@ -1,4 +1,22 @@
-# Review and handoff — September 18, 2026
+# Review and handoff
+
+## September 26, 2026 — motion redesign
+
+- The generator emits 20 animated SVGs (5 compositions × 2 widths × 2 themes),
+  1.7–39 KB each. Two runs produce identical hashes; `xmllint` passes. They
+  contain no scripts, and their only URL is the SVG namespace.
+- A Playwright capture of every SVG seeked frames from 0 to 4 s. No painted
+  element leaves its viewBox. With reduced motion, each SVG matches its rest
+  frame except for 1 px antialiasing on composited edges.
+- The GitHub Markdown API preserves `picture`, `source`, alt text and width. Local
+  previews at 375, 768 and 1440 px in both themes load every image, with no
+  horizontal overflow.
+- `github.com/federicolopeza/artificial_analysis` returned a public 404. It was
+  removed from the README and from the suggested pins.
+- These are previews; published captures come after the merge. The GitHub image
+  cache can delay the new SVGs.
+
+## September 18, 2026
 
 ## Corrections
 
@@ -49,7 +67,6 @@ Pins:
 
 1. `binance-p2p-bot`: the public AutoP2P overview. Its own older product copy can
    be reviewed separately; it was not modified as part of this task.
-2. `artificial_analysis`: inspectable Python/Streamlit code behind the small tool.
 
 No public REKON source repository was found to recommend as a pin. Do not fill
 all six slots with weaker work. Suggested location: Montevideo, Uruguay; suggested

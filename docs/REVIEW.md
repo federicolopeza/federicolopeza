@@ -1,6 +1,56 @@
-# Review and handoff — September 18, 2026
+# Review and handoff
 
-## Corrections
+## September 26, 2026: brand alignment and motion
+
+### Changes
+
+- The profile now uses the federicolopez.uy brand: "Build. Break. Bound.", the
+  void/paper tokens, per-product colours, Geist / Geist Mono / Instrument Serif
+  italic and the bracket-and-point mark.
+- Roles and dates come from the site's `lib/cv.ts`, which is sourced from
+  Federico's public LinkedIn, exported 2026-09-26. REKON is now "Co-founder &
+  CTO", as on the live site and LinkedIn.
+- The contact email is the one the live site publishes (provided by Federico for
+  the site). It supersedes the September 18 decision not to republish an address.
+- `github.com/federicolopeza/artificial_analysis` returns a public 404. It was
+  removed from the README and is not suggested as a pin. The website still links
+  to it; that belongs to the website repository.
+
+### Verification
+
+- The generator emits 24 animated SVGs (6 compositions × 2 widths × 2 themes),
+  all ≤ 52 KB. Two runs produce identical hashes; `xmllint` passes. They contain
+  no scripts, and their only URL is the SVG namespace.
+- A Playwright (Chromium) capture seeked every animation at 0, 0.8, 1.6, 2.5
+  and 4 s. No painted element leaves its viewBox.
+- Rest frame: intros are finished and infinite loops cancelled. It was compared
+  with a reduced-motion render and with a render with `<style>` removed. The two
+  renders are identical to each other. Their only difference from the rest frame
+  is 1 px antialiasing on composited edges. No walker or halo shows without CSS.
+- The GitHub Markdown API preserves `picture`, `source`, alt text and width. Local
+  previews at 375, 768 and 1440 px in both themes load every image, with no
+  horizontal overflow. Every README link returns 200 (LinkedIn answers bots with 999).
+- An independent review found no blocking issue. Its fixes are applied: hidden-at-rest
+  attributes, REKON route starts, the native name, docs accuracy and this
+  heading structure.
+- Not verified: Safari, Firefox, the GitHub mobile app and published captures.
+  Those come after the merge; the GitHub image cache can delay new SVGs.
+- Known trade-off: GitHub wraps every image in a link, so the decorative dividers
+  are links with empty alt text.
+
+### Suggested account changes (not applied)
+
+Bio:
+
+> Co-founder & CTO @ REKON · Creator of ARGUS and AutoP2P · Founder @ Pentagoo Labs · Build. Break. Bound. · Montevideo
+
+Pins: `binance-p2p-bot`, the public AutoP2P overview. Do not fill the other slots
+with weaker work. Suggested website: https://federicolopez.uy/.
+
+## September 18, 2026
+
+
+### Corrections
 
 Removed unsubstantiated revenue, user, uptime, vulnerability, module/test/ADR and
 performance counters. Removed fake telemetry, obsolete SVGs, terminal.py and the
@@ -17,7 +67,7 @@ overview, not the engine's source. The article on Federico's site introduces v2
 in English and Spanish and links to current product details. Historical architecture
 writing is labeled as such. No private repository details were consulted.
 
-## Verification
+### Verification
 
 - 12 standalone SVGs, outlined local fonts, no scripts or external dependencies.
 - All visible SVG text remains within the viewbox. Separate compact compositions
@@ -39,7 +89,7 @@ are local website previews, and `published-*` are actual deployed captures.
 The website has its own implementation and verification notes in
 `../federicolopez.uy/docs/REDESIGN.md`.
 
-## Suggested account changes — not applied
+### Suggested account changes — not applied
 
 Bio (under GitHub's length limit):
 

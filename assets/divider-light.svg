@@ -9,7 +9,7 @@
 @keyframes f{from{opacity:0}}
 @keyframes p{from{opacity:0;transform:scale(.3)}}
 @keyframes d{from{stroke-dashoffset:1.05}}
-@keyframes h{0%{opacity:.45;transform:scale(1)}35%,100%{opacity:0;transform:scale(3.4)}}
-@keyframes w{0%{stroke-dashoffset:.05}65%,100%{stroke-dashoffset:-1.05}}
+@keyframes h{0%{opacity:.5;transform:scale(1)}35%,100%{opacity:0;transform:scale(3.4)}}
+@keyframes w{0%{opacity:1;stroke-dashoffset:.05}65%{opacity:1;stroke-dashoffset:-1.05}66%,100%{opacity:0;stroke-dashoffset:-1.05}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-</style><path d="M1 8L839 8" fill="none" stroke="#D5DAE2" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.10s"/><path d="M1 8L48 8" fill="none" stroke="#2B59DB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.00s"/><path d="M1 8H839" fill="none" stroke="#2B59DB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="w" style="animation-delay:1.20s"/></svg>
+</style><path d="M1 8L839 8" fill="none" stroke="#BDB8AD" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.10s"/><path d="M1 8L13 8" fill="none" stroke="#0A6E66" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.05s"/><path d="M19 8L31 8" fill="none" stroke="#BB2328" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.15s"/><path d="M37 8L49 8" fill="none" stroke="#127046" stroke-width="3" stroke-linecap="butt" stroke-linejoin="round" pathLength="1" class="d" style="animation-delay:0.25s"/><path opacity="0" d="M60 8H839" fill="none" stroke="#8E5100" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" class="w" style="animation-delay:1.20s"/></svg>

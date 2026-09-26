@@ -1,12 +1,13 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["fonttools==4.59.2"]
+# dependencies = ["fonttools==4.59.2", "brotli==1.1.0"]
 # ///
 """Static self-contained animated SVGs. Run: uv run scripts/generate_assets.py.
 Edit copy, geometry, palette and timing here. Outlined bundled OFL fonts need no
 viewer fonts. Motion is CSS inside each SVG: no scripts, no external requests.
 The resting (unanimated) state is the final composition, so reduced motion and
 renderers without CSS animation still show the complete image.
+Brand, palette and type follow federicolopez.uy ("Build. Break. Bound.").
 """
 from html import escape
 from pathlib import Path
@@ -16,20 +17,22 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 FONTS = {
-    "display": TTFont(ASSETS / "fonts/BricolageGrotesque-Bold.ttf"),
-    "body": TTFont(ASSETS / "fonts/IBMPlexSans-Regular.ttf"),
+    "sans": TTFont(ASSETS / "fonts/Geist-Regular.ttf"),
+    "strong": TTFont(ASSETS / "fonts/Geist-SemiBold.ttf"),
+    "mono": TTFont(ASSETS / "fonts/GeistMono-Regular.ttf"),
+    "serif": TTFont(ASSETS / "fonts/InstrumentSerif-Italic.woff2"),
 }
+# Tokens from federicolopez.uy app/globals.css: void (dark) and paper (light).
+# build = Pentagoo Labs, brk = REKON / ARGUS, bound = AutoP2P, signal = the limit.
 THEMES = {
-    "light": dict(bg="#F6F7F9", ink="#15171C", muted="#565C68", line="#D5DAE2", edge="#E1E5EB", accent="#2B59DB", soft="#E3E9FA"),
-    "dark": dict(bg="#101318", ink="#EEF0F4", muted="#A3ABB9", line="#353C4A", edge="#232833", accent="#8FAEFF", soft="#1D2842"),
-}
-REKON = {
-    "light": dict(accent="#B0314A", soft="#F7DFE4"),
-    "dark": dict(accent="#FF9CAC", soft="#3E2533"),
+    "light": dict(bg="#F1EFEA", edge="#D6D2C9", ink="#111110", muted="#57544E", line="#BDB8AD",
+                  signal="#8E5100", build="#0A6E66", brk="#BB2328", bound="#127046"),
+    "dark": dict(bg="#0A0A0B", edge="#242427", ink="#EDEBE6", muted="#A19E97", line="#38383D",
+                 signal="#FFB23F", build="#45D5C8", brk="#FF5456", bound="#3DD68C"),
 }
 
 # Only `from` keyframes for intros: the element's own styles are the final frame.
-# Loops start and end invisible, so their resting state adds nothing.
+# Loops are invisible at rest, also via an opacity="0" attribute for viewers without CSS.
 STYLE = """<style>
 .g,.u,.f,.p,.d{animation-duration:.8s;animation-timing-function:cubic-bezier(.16,1,.3,1);animation-fill-mode:both}
 .g{animation-name:g}.u{animation-name:u}.f{animation-name:f}.p{animation-name:p;transform-box:fill-box;transform-origin:center}
@@ -41,27 +44,36 @@ STYLE = """<style>
 @keyframes f{from{opacity:0}}
 @keyframes p{from{opacity:0;transform:scale(.3)}}
 @keyframes d{from{stroke-dashoffset:1.05}}
-@keyframes h{0%{opacity:.45;transform:scale(1)}35%,100%{opacity:0;transform:scale(3.4)}}
-@keyframes w{0%{stroke-dashoffset:.05}65%,100%{stroke-dashoffset:-1.05}}
+@keyframes h{0%{opacity:.5;transform:scale(1)}35%,100%{opacity:0;transform:scale(3.4)}}
+@keyframes w{0%{opacity:1;stroke-dashoffset:.05}65%{opacity:1;stroke-dashoffset:-1.05}66%,100%{opacity:0;stroke-dashoffset:-1.05}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>"""
+
+
+def mix(a, b, t):
+    """a blended toward b by t (0..1), as #RRGGBB."""
+    ca, cb = (int(a[i:i + 2], 16) for i in (1, 3, 5)), (int(b[i:i + 2], 16) for i in (1, 3, 5))
+    return "#" + "".join(f"{round(x + (y - x) * t):02X}" for x, y in zip(ca, cb))
 
 
 def at(delay):
     return f' style="animation-delay:{delay:.2f}s"'
 
 
-def measure(value, size, face="body"):
+def advance(font, character, tracking):
+    return font["hmtx"][font.getBestCmap()[ord(character)]][0] + tracking * font["head"].unitsPerEm
+
+
+def measure(value, size, face="sans", tracking=0.0):
     font = FONTS[face]
-    cmap = font.getBestCmap()
-    return sum(font["hmtx"][cmap[ord(c)]][0] for c in value) * size / font["head"].unitsPerEm
+    return sum(advance(font, c, tracking) for c in value) * size / font["head"].unitsPerEm
 
 
-def text(value, x, y, size, color, face="body", anim="u", start=0.0, stagger=0.0):
-    """Outlined text. anim="g" rises glyph by glyph; "u"/"f" moves the whole line."""
+def text(value, x, y, size, color, face="sans", anim="u", start=0.0, stagger=0.0, tracking=0.0):
+    """Outlined text. anim="g" rises glyph by glyph; "u"/"f" moves the whole line; None is static."""
     font = FONTS[face]
     glyphs, cmap = font.getGlyphSet(), font.getBestCmap()
-    scale, cursor, paths, index = size / font["head"].unitsPerEm, 0, [], 0
+    scale, cursor, paths, index = size / font["head"].unitsPerEm, 0.0, [], 0
     for character in value:
         name = cmap[ord(character)]
         pen = SVGPathPen(glyphs)
@@ -69,25 +81,34 @@ def text(value, x, y, size, color, face="body", anim="u", start=0.0, stagger=0.0
         path = pen.getCommands()
         if path:
             if anim == "g":
-                paths.append(f'<g transform="translate({cursor})"><path class="g"{at(start + index * stagger)} d="{path}"/></g>')
+                paths.append(f'<g transform="translate({cursor:g})"><path class="g"{at(start + index * stagger)} d="{path}"/></g>')
                 index += 1
             else:
-                paths.append(f'<path transform="translate({cursor})" d="{path}"/>')
-        cursor += font["hmtx"][name][0]
-    body = f'<g fill="{color}" aria-label="{escape(value)}" transform="translate({x} {y}) scale({scale:.6f} {-scale:.6f})">' + "".join(paths) + "</g>"
+                paths.append(f'<path transform="translate({cursor:g})" d="{path}"/>')
+        cursor += advance(font, character, tracking)
+    body = f'<g fill="{color}" aria-label="{escape(value)}" transform="translate({x:g} {y:g}) scale({scale:.6f} {-scale:.6f})">' + "".join(paths) + "</g>"
     return body if anim in ("g", None) else f'<g class="{anim}"{at(start)}>{body}</g>'
 
 
-def rect(x, y, w, h, fill, rx=0, cls=None, delay=0.0, stroke=None):
+def label(value, x, y, size, color, **kw):
+    """Technical label: Geist Mono, uppercase, slightly tracked."""
+    return text(value.upper(), x, y, size, color, "mono", tracking=0.04, **kw)
+
+
+def label_width(value, size):
+    return measure(value.upper(), size, "mono", 0.04)
+
+
+def rect(x, y, w, h, fill, rx=0.0, cls=None, delay=0.0, stroke=None):
     attrs = f' rx="{rx}"' if rx else ""
     attrs += f' stroke="{stroke}"' if stroke else ""
     attrs += f' class="{cls}"{at(delay)}' if cls else ""
-    return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{fill}"{attrs}/>'
+    return f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" fill="{fill}"{attrs}/>'
 
 
 def path(d, color, width=2.0, draw=None, dashed=False, cls=None, delay=0.0, cap="round"):
     """Stroked path. draw=seconds animates it on from its start."""
-    attrs = f' stroke="{color}" stroke-width="{width}" stroke-linecap="{cap}" stroke-linejoin="round"'
+    attrs = f' stroke="{color}" stroke-width="{width:g}" stroke-linecap="{cap}" stroke-linejoin="round"'
     if dashed:
         attrs += ' stroke-dasharray="4 5"'
     if draw is not None:
@@ -97,22 +118,39 @@ def path(d, color, width=2.0, draw=None, dashed=False, cls=None, delay=0.0, cap=
     return f'<path d="{d}" fill="none"{attrs}/>'
 
 
-def line(x1, y1, x2, y2, color, width=2, **kw):
-    return path(f"M{x1} {y1}L{x2} {y2}", color, width, **kw)
+def line(x1, y1, x2, y2, color, width=2.0, **kw):
+    return path(f"M{x1:g} {y1:g}L{x2:g} {y2:g}", color, width, **kw)
 
 
 def walker(d, color, width, delay):
     """A dot that travels the path, then pauses out of sight. Invisible at rest."""
-    return path(d, color, width, cls="w", delay=delay)
+    return path(d, color, width, cls="w", delay=delay).replace("<path ", '<path opacity="0" ', 1)
 
 
 def circle(x, y, r, color, fill="none", cls=None, delay=0.0):
     attrs = f' class="{cls}"{at(delay)}' if cls else ""
-    return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{fill}" stroke="{color}" stroke-width="2"{attrs}/>'
+    return f'<circle cx="{x:g}" cy="{y:g}" r="{r:g}" fill="{fill}" stroke="{color}" stroke-width="2"{attrs}/>'
+
+
+def dot(x, y, r, fill, cls, delay):
+    hidden = ' opacity="0"' if cls == "h" else ""
+    return f'<circle cx="{x:g}" cy="{y:g}" r="{r:g}" fill="{fill}"{hidden} class="{cls}"{at(delay)}/>'
 
 
 def card(w, h, p):
     return rect(0.5, 0.5, w - 1, h - 1, p["bg"], rx=14, stroke=p["edge"])
+
+
+def mark(x, y, size, p, start=0.0, halo=True):
+    """The brand mark: two brackets (the boundary) around one point (the decision)."""
+    k = size / 64
+    width = 5.5 * k
+    s = path(f"M{x + 23 * k:g} {y + 13 * k:g}h{-9 * k:g}v{38 * k:g}h{9 * k:g}", p["ink"], width, draw=start, cap="square")
+    s += path(f"M{x + 41 * k:g} {y + 13 * k:g}h{9 * k:g}v{38 * k:g}h{-9 * k:g}", p["ink"], width, draw=start, cap="square")
+    if halo:
+        s += dot(x + 32 * k, y + 32 * k, 6 * k, p["signal"], "h", start + 2.2)
+    s += dot(x + 32 * k, y + 32 * k, 6 * k, p["signal"], "p", start + 0.55)
+    return s
 
 
 def write(name, w, h, title, content):
@@ -121,82 +159,86 @@ def write(name, w, h, title, content):
     (ASSETS / f"{name}.svg").write_text(svg)
 
 
-HERO_TITLE = "Federico López. I build software. I take systems apart."
+def verbs(x, y, size, p, start, gap=22):
+    """Build / Break / Bound, each in its product colour, as on the site."""
+    s = ""
+    for i, (word, key) in enumerate([("Build", "build"), ("Break", "brk"), ("Bound", "bound")]):
+        s += rect(x, y - size * 0.62, size * 0.5, size * 0.5, p[key], rx=2, cls="p", delay=start + i * 0.15)
+        s += text(word, x + size * 0.85, y, size, p[key], "strong", start=start + 0.05 + i * 0.15, tracking=-0.02)
+        x += size * 0.85 + measure(word, size, "strong", -0.02) + gap
+    return s
+
+
+HERO_TITLE = "Federico López. The limit is part of the design. Build, break, bound."
 
 
 def hero(theme, mobile):
     p = THEMES[theme]
-    w, h = (360, 300) if mobile else (840, 300)
+    w, h = (360, 372) if mobile else (840, 320)
     s = card(w, h, p)
     if mobile:
-        x, first, second, big = 24, 112, 184, (64, 70)
-        s += text("Software / systems / field notes", x, 42, 14, p["muted"], anim="f", start=0.1)
+        x = 24
+        s += mark(x - 6, 16, 40, p, start=0.05, halo=False)
+        s += label("Montevideo, UY", w - 24 - label_width("Montevideo, UY", 11), 40, 11, p["muted"], anim="f", start=0.2)
+        s += text("Federico", x - 2, 128, 62, p["ink"], "strong", anim="g", start=0.25, stagger=0.035, tracking=-0.06)
+        s += text("López", x - 2, 190, 62, p["ink"], "strong", anim="g", start=0.5, stagger=0.045, tracking=-0.06)
+        s += text("The limit is", x, 236, 22, p["muted"], start=1.05, tracking=-0.02)
+        s += text("part of the design.", x, 268, 31, p["ink"], "serif", start=1.2)
+        s += line(x, 296, w - x, 296, p["edge"], 1, draw=1.3)
+        s += verbs(x, 334, 17, p, 1.6, gap=16)
+        s += label("Since 2017", x, 360, 10, p["muted"], anim="f", start=2.1)
     else:
-        x, first, second, big = 36, 132, 218, (88, 92)
-        s += text("Software / systems / field notes", x, 46, 17, p["muted"], anim="f", start=0.1)
-        s += text("Montevideo, UY", w - 36 - measure("Montevideo, UY", 15), 46, 15, p["muted"], anim="f", start=0.2)
-    s += text("Federico", x - 3, first, big[0], p["ink"], "display", anim="g", start=0.25, stagger=0.035)
-    s += text("López", x - 3, second, big[1], p["ink"], "display", anim="g", start=0.45, stagger=0.045)
-    dot_x = x - 3 + measure("López", big[1], "display") + (9 if mobile else 11)
-    dot_y, dot_r = second - (7 if mobile else 9), 6 if mobile else 7
-    s += circle(dot_x, dot_y, dot_r, p["accent"], p["accent"], cls="h", delay=2.4)
-    s += circle(dot_x, dot_y, dot_r, p["accent"], p["accent"], cls="p", delay=1.0)
-    rule_y = 218 if mobile else 246
-    s += line(x, rule_y, w - x, rule_y, p["line"], 1, draw=1.05)
-    if mobile:
-        s += text("I build software.", x, 252, 22, p["ink"], start=1.5)
-        s += text("I take systems apart.", x, 281, 22, p["ink"], start=1.62)
-    else:
-        s += text("I build software. I take systems apart.", x, 281, 22, p["ink"], start=1.6)
-        # A shared input branches into building, examining and writing.
-        tx, bx = 540, 578
-        s += circle(tx - 36, 138, 4, p["ink"], p["bg"], cls="p", delay=1.1)
-        s += line(tx - 32, 138, bx, 138, p["ink"], 2, draw=1.15)
-        s += line(bx, 138, bx, 78, p["line"], 2, draw=1.4)
-        s += line(bx, 138, bx, 198, p["line"], 2, draw=1.4)
-        for i, (y, label) in enumerate([(78, "Build"), (138, "Examine"), (198, "Write")]):
-            t = 1.55 + i * 0.12
-            s += line(bx, y, bx + 42, y, p["line"], 2, draw=t)
-            s += text(label, bx + 88, y + 8, 22, p["ink"], start=t + 0.2)
-        s += rect(bx + 44, 69, 18, 18, p["accent"], rx=3, cls="p", delay=1.75)
-        s += circle(bx + 53, 138, 9, p["accent"], cls="p", delay=1.87)
-        for i, (dy, length) in enumerate([(-7, 19), (0, 19), (7, 13)]):
-            s += line(bx + 44, 198 + dy, bx + 44 + length, 198 + dy, p["accent"], 2, draw=1.99 + i * 0.06)
-        s += walker(f"M{tx - 36} 138H{bx}V78H{bx + 42}", p["accent"], 5, 2.6)
+        x = 40
+        s += label("Software · Security · Automation", x, 45, 12, p["muted"], anim="f", start=0.15)
+        s += label("Montevideo, UY", w - 40 - label_width("Montevideo, UY", 12), 45, 12, p["muted"], anim="f", start=0.2)
+        s += text("Federico López", x - 3, 150, 86, p["ink"], "strong", anim="g", start=0.25, stagger=0.03, tracking=-0.065)
+        s += text("The limit is", x, 204, 27, p["muted"], start=0.95, tracking=-0.02)
+        s += text("part of the design.", x + measure("The limit is ", 27, "sans", -0.02), 204, 36, p["ink"], "serif", start=1.1)
+        s += mark(w - 40 - 150, 64, 150, p, start=0.7)
+        s += line(x, 246, w - x, 246, p["edge"], 1, draw=1.2)
+        s += verbs(x, 287, 20, p, 1.55)
+        since = "Building since 2017"
+        s += label(since, w - 40 - label_width(since, 12), 285, 12, p["muted"], anim="f", start=2.0)
     write(f'hero{"-mobile" if mobile else ""}-{theme}', w, h, HERO_TITLE, s)
 
 
-REKON_TITLE = "REKON: agents explore attack paths, a person authorizes intrusive actions, evidence is validated. Conceptual diagram."
+def kicker(value, key, p, x=24, y=34, start=0.0):
+    return rect(x, y - 9, 8, 8, p[key], rx=2, cls="p", delay=start) + label(value, x + 16, y, 11, p["muted"], anim="f", start=start + 0.05)
+
+
+REKON_TITLE = "REKON / ARGUS: agents explore attack paths inside an agreed scope, a person authorizes intrusive actions, evidence is validated. Conceptual diagram."
 
 
 def rekon(theme, mobile):
-    p = {**THEMES[theme], **REKON[theme]}
-    w, h = (360, 176) if mobile else (840, 160)
+    p = THEMES[theme]
+    accent, soft = p["brk"], mix(p["bg"], p["brk"], 0.18)
+    w, h = (360, 200) if mobile else (840, 184)
     s = card(w, h, p)
+    s += kicker("Break — REKON / ARGUS", "brk", p)
     xs = [52, 180, 300] if mobile else [130, 420, 700]
-    cy = 66
+    cy = 90
     routes = []
     for i, offset in enumerate([-24, 0, 24]):
         sx = xs[0] - 16
-        d = f"M{sx} {cy + offset}C{sx + (xs[1] - sx) * 0.55} {cy + offset} {xs[1] - 60} {cy} {xs[1] - 22} {cy}"
+        d = f"M{sx + 4} {cy + offset}C{sx + (xs[1] - sx) * 0.55:g} {cy + offset} {xs[1] - 60} {cy} {xs[1] - 22} {cy}"
         routes.append(d)
         s += circle(sx, cy + offset, 4, p["muted"], p["bg"], cls="p", delay=0.15 + i * 0.08)
         s += path(d, p["muted"], 1.5, draw=0.3 + i * 0.12)
     # Exploration may run freely; it stops at the authorization gate.
     for i, d in enumerate(routes):
-        s += walker(d, p["accent"], 5, 2.4 + i * 1.1)
-    s += rect(xs[1] - 19, cy - 22, 38, 44, p["accent"], rx=6, cls="p", delay=1.0)
+        s += walker(d, accent, 5, 2.4 + i * 1.1)
+    s += rect(xs[1] - 19, cy - 22, 38, 44, accent, rx=6, cls="p", delay=1.0)
     s += path(f"M{xs[1] - 9} {cy}l6 6 12-13", p["bg"], 3, draw=1.25)
-    s += line(xs[1] + 20, cy, xs[2] - 16, cy, p["accent"], 2, draw=1.35)
-    s += rect(xs[2] - 13, cy - 18, 26, 36, p["soft"], rx=4, cls="p", delay=1.75)
+    s += line(xs[1] + 20, cy, xs[2] - 16, cy, accent, 2, draw=1.35)
+    s += rect(xs[2] - 13, cy - 18, 26, 36, soft, rx=4, cls="p", delay=1.75)
     for i, dy in enumerate([-8, 0, 8]):
-        s += line(xs[2] - 7, cy + dy, xs[2] + 7, cy + dy, p["accent"], 2, draw=1.85 + i * 0.1)
-    size = 19 if mobile else 22
+        s += line(xs[2] - 7, cy + dy, xs[2] + 7, cy + dy, accent, 2, draw=1.85 + i * 0.1)
+    size = 18 if mobile else 20
     labels = ["Explore", "Authorize", "Validate"] if mobile else ["Attack paths", "Human authorization", "Validated evidence"]
-    for i, (label, cx) in enumerate(zip(labels, xs)):
-        s += text(label, cx - measure(label, size) / 2, 122, size, p["ink"], start=0.5 + i * 0.5)
+    for i, (value, cx) in enumerate(zip(labels, xs)):
+        s += text(value, cx - measure(value, size) / 2, 146, size, p["ink"], start=0.5 + i * 0.5)
     if mobile:
-        s += text("Human approval before action.", 24, 156, 17, p["muted"], anim="f", start=2.0)
+        s += text("Human approval before action.", 24, 180, 15, p["muted"], anim="f", start=2.0)
     write(f'rekon{"-mobile" if mobile else ""}-{theme}', w, h, REKON_TITLE, s)
 
 
@@ -205,61 +247,117 @@ AUTOP2P_TITLE = "AutoP2P: market input passes through operator rules and price l
 
 def autop2p(theme, mobile):
     p = THEMES[theme]
-    w, h = (360, 176) if mobile else (840, 160)
+    accent, soft = p["bound"], mix(p["bg"], p["bound"], 0.14)
+    w, h = (360, 200) if mobile else (840, 184)
     s = card(w, h, p)
-    start, end = (24, 197) if mobile else (36, 490)
-    top, bottom = 30, 92
-    s += rect(start, top, end - start, bottom - top, p["soft"], cls="f", delay=0.1)
-    s += line(start, top, end, top, p["accent"], 1, dashed=True, cls=None)
-    s += line(start, bottom, end, bottom, p["accent"], 1, dashed=True)
-    points = [(start, 74), (start + 28, 74), (start + 28, 58), (start + 62, 58), (start + 62, 69), (start + 95, 69), (start + 95, 46), (end, 46)]
+    s += kicker("Bound — AutoP2P", "bound", p)
+    start, end = (24, 197) if mobile else (40, 490)
+    top, bottom = 56, 118
+    s += rect(start, top, end - start, bottom - top, soft, cls="f", delay=0.1)
+    s += line(start, top, end, top, accent, 1, dashed=True)
+    s += line(start, bottom, end, bottom, accent, 1, dashed=True)
+    points = [(start, 100), (start + 28, 100), (start + 28, 84), (start + 62, 84), (start + 62, 95), (start + 95, 95), (start + 95, 72), (end, 72)]
     d = "M" + " L".join(f"{x} {y}" for x, y in points)
-    s += path(d, p["accent"], 3, draw=0.35, cap="butt")
+    s += path(d, accent, 3, draw=0.35, cap="butt")
     # The marker walks the price line and never leaves the operator's band.
     s += walker(d, p["ink"], 7, 2.6)
-    s += circle(end, 46, 4, p["accent"], p["bg"], cls="p", delay=1.3)
-    tx = 222 if mobile else 552
-    s += text("UPDATE / HOLD", tx, 58, 15 if mobile else 27, p["ink"], "display", anim="g", start=1.3, stagger=0.025)
-    s += text("+ a reason", tx, 83, 18 if mobile else 23, p["muted"], start=1.75)
-    s += text("Your rules. Your limits.", start, 126, 19 if mobile else 23, p["ink"], start=0.9)
-    s += text("Schematic · not live prices", start if mobile else tx, 152 if mobile else 126, 16 if mobile else 17, p["muted"], anim="f", start=2.0)
+    s += circle(end, 72, 4, accent, p["bg"], cls="p", delay=1.3)
+    tx = 222 if mobile else 556
+    s += label("Update / Hold", tx, 84, 14 if mobile else 26, p["ink"], anim="g", start=1.3, stagger=0.025)
+    s += text("+ a reason", tx, 108 if mobile else 114, 19 if mobile else 26, p["muted"], "serif", start=1.75)
+    s += text("Your rules. Your limits.", start, 152, 18 if mobile else 21, p["ink"], start=0.9)
+    s += label("Schematic · not live prices", start if mobile else tx, 180 if mobile else 150, 10 if mobile else 11, p["muted"], anim="f", start=2.0)
     write(f'autop2p{"-mobile" if mobile else ""}-{theme}', w, h, AUTOP2P_TITLE, s)
 
 
-PENTAGOO_TITLE = "Pentagoo Labs: a concrete problem becomes a product, applied AI or integration that is usable in production. Conceptual diagram."
+PENTAGOO_TITLE = "Pentagoo Labs: a concrete problem becomes a product, automation or integration that is usable in production. Conceptual diagram."
 
 
 def pentagoo(theme, mobile):
     p = THEMES[theme]
-    w, h = (360, 176) if mobile else (840, 160)
+    accent, soft = p["build"], mix(p["bg"], p["build"], 0.22)
+    w, h = (360, 200) if mobile else (840, 184)
     s = card(w, h, p)
+    s += kicker("Build — Pentagoo Labs", "build", p)
     xs = [62, 180, 294] if mobile else [140, 420, 700]
-    cy = 58
-    track = f"M{xs[0]} {cy}H{xs[2]}"
+    cy = 86
     s += line(xs[0] + 14, cy, xs[1] - 16, cy, p["line"], 2, draw=0.35)
     s += line(xs[1] + 16, cy, xs[2] - 16, cy, p["line"], 2, draw=0.95)
-    s += walker(track, p["accent"], 6, 2.4)
-    s += circle(xs[0], cy, 12, p["accent"], p["bg"], cls="p", delay=0.15)
-    s += path(f"M{xs[0] - 4} {cy - 4}a4 4 0 1 1 5 4v3M{xs[0] + 1} {cy + 7}v.5", p["accent"], 2, cls="f", delay=0.25)
-    s += rect(xs[1] - 13, cy - 13, 26, 26, p["soft"], rx=5, cls="p", delay=0.75)
-    s += path(f"M{xs[1] - 6} {cy - 5}l-4 5 4 5M{xs[1] + 6} {cy - 5}l4 5-4 5", p["accent"], 2, cls="f", delay=0.9)
-    s += circle(xs[2], cy, 12, p["accent"], p["accent"], cls="p", delay=1.35)
+    s += walker(f"M{xs[0]} {cy}H{xs[2]}", accent, 6, 2.4)
+    s += circle(xs[0], cy, 12, accent, p["bg"], cls="p", delay=0.15)
+    s += path(f"M{xs[0] - 4} {cy - 4}a4 4 0 1 1 5 4v3M{xs[0] + 1} {cy + 7}v.5", accent, 2, cls="f", delay=0.25)
+    # A small lattice: the structure assembles block by block.
+    for i, (dx, dy) in enumerate([(-9, -9), (1, -9), (-9, 1), (1, 1)]):
+        s += rect(xs[1] + dx, cy + dy, 8, 8, accent if i != 3 else soft, rx=1.5, cls="p", delay=0.75 + i * 0.08)
+    s += circle(xs[2], cy, 12, accent, accent, cls="p", delay=1.35)
     s += path(f"M{xs[2] - 5} {cy}l3.5 3.5 7-7.5", p["bg"], 2.5, draw=1.5)
-    size = 18 if mobile else 22
-    labels = ["Problem", "Build", "Production"] if mobile else ["A concrete problem", "Product · AI · integration", "Usable in production"]
-    for i, (label, cx) in enumerate(zip(labels, xs)):
-        s += text(label, cx - measure(label, size) / 2, 112, size, p["ink"], start=0.3 + i * 0.6)
+    size = 18 if mobile else 20
+    labels = ["Problem", "Build", "Production"] if mobile else ["A concrete problem", "Product · automation · AI", "Usable in production"]
+    for i, (value, cx) in enumerate(zip(labels, xs)):
+        s += text(value, cx - measure(value, size) / 2, 140, size, p["ink"], start=0.3 + i * 0.6)
     if mobile:
-        s += text("Products · applied AI · integrations", 24, 150, 16, p["muted"], anim="f", start=1.9)
+        s += text("SaaS, tools, integrations, AI agents.", 24, 176, 15, p["muted"], anim="f", start=1.9)
     write(f'pentagoo{"-mobile" if mobile else ""}-{theme}', w, h, PENTAGOO_TITLE, s)
+
+
+# Source: federicolopez.uy lib/cv.ts (Federico's public LinkedIn, 2026-09-26). Newest first.
+# Years are fractional: "2026-03" → 2026 + 2/12.
+ROLES = [
+    ("REKON", "Co-founder & CTO", 2026 + 2 / 12, None, "brk"),
+    ("Pentagoo Labs", "Founder", 2025 + 4 / 12, None, "build"),
+    ("AutoP2P", "Creator", 2025 + 3 / 12, None, "bound"),
+    ("Pentagoo P2P", "Founder", 2022 + 3 / 12, 2025 + 4 / 12, "bound"),
+    ("Calculame.uy", "Web developer", 2019 + 10 / 12, 2020 + 10 / 12, "build"),
+    ("Independent", "Freelance web developer", 2017 + 1 / 12, 2019 + 9 / 12, "build"),
+]
+NOW, FIRST = 2026 + 8 / 12, 2017.0
+TRAJECTORY_TITLE = ("Trajectory, 2017 to now: freelance web developer 2017–2019; web developer at Calculame.uy 2019–2020; "
+                    "founder of Pentagoo P2P 2022–2025; creator of AutoP2P since 2025; founder of Pentagoo Labs since 2025; "
+                    "co-founder and CTO of REKON since 2026.")
+
+
+def trajectory(theme, mobile):
+    p = THEMES[theme]
+    if mobile:
+        w, h, left, right, top, row = 360, 392, 24, 326, 88, 46
+    else:
+        w, h, left, right, top, row = 840, 300, 330, 790, 84, 30
+    span = lambda year: left + (year - FIRST) / (NOW - FIRST) * (right - left)
+    s = card(w, h, p)
+    s += kicker("Trajectory — building since 2017", "signal", p)
+    bars = [top + n * row + (14 if mobile else 0) for n in range(len(ROLES))]
+    axis_y = bars[-1] + (26 if mobile else 24)
+    for year in [2017, 2019, 2021, 2023, 2025]:
+        x = span(year)
+        s += line(x, top - 22, x, axis_y - 12, p["edge"], 1, cls="f", delay=0.1)
+        s += label(str(year), x - label_width(str(year), 11) / 2 if year > FIRST else x, axis_y + 6, 11, p["muted"], anim="f", start=0.15)
+    now = span(NOW)
+    s += line(now, top - 22, now, axis_y - 12, p["signal"], 1.5, dashed=True, cls="f", delay=0.2)
+    s += label("Now", now - label_width("Now", 11), axis_y + 6, 11, p["signal"], anim="f", start=0.25)
+    # Oldest first: the trajectory draws itself in chronological order.
+    for n, (org, role, begin, end, key) in enumerate(ROLES):
+        t = 0.35 + (len(ROLES) - 1 - n) * 0.22
+        y = bars[n]
+        s += line(span(begin), y, span(end if end else NOW), y, p[key], 8, draw=t, cap="butt")
+        if mobile:
+            ty = y - 13
+            s += text(org, 24, ty, 15, p["ink"], "strong", start=t, tracking=-0.01)
+            s += label(role, 24 + measure(org, 15, "strong", -0.01) + 10, ty, 10, p["muted"], anim="f", start=t + 0.1)
+        else:
+            s += text(org, 24, y + 5, 15, p["ink"], "strong", start=t, tracking=-0.01)
+            s += label(role, 146, y + 4, 10, p["muted"], anim="f", start=t + 0.1)
+    s += dot(now, top - 22, 4, p["signal"], "h", 2.6)
+    s += dot(now, top - 22, 4, p["signal"], "p", 1.9)
+    write(f'trajectory{"-mobile" if mobile else ""}-{theme}', w, h, TRAJECTORY_TITLE, s)
 
 
 def divider(theme, mobile):
     p = THEMES[theme]
     w, h = (360, 16) if mobile else (840, 16)
     s = line(1, 8, w - 1, 8, p["line"], 1, draw=0.1)
-    s += line(1, 8, 48, 8, p["accent"], 3, draw=0.0)
-    s += walker(f"M1 8H{w - 1}", p["accent"], 3, 1.2)
+    for i, key in enumerate(["build", "brk", "bound"]):
+        s += line(1 + i * 18, 8, 13 + i * 18, 8, p[key], 3, draw=0.05 + i * 0.1, cap="butt")
+    s += walker(f"M60 8H{w - 1}", p["signal"], 3, 1.2)
     write(f'divider{"-mobile" if mobile else ""}-{theme}', w, h, "Section divider", s)
 
 
@@ -267,7 +365,7 @@ if __name__ == "__main__":
     count = 0
     for theme in THEMES:
         for mobile in (False, True):
-            for build in (hero, rekon, autop2p, pentagoo, divider):
+            for build in (hero, rekon, autop2p, pentagoo, trajectory, divider):
                 build(theme, mobile)
                 count += 1
     print(f"Generated {count} animated SVGs from bundled fonts.")
